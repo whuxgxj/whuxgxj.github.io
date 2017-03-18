@@ -1,0 +1,34 @@
+# Site Settings
+title:               珞珈村下山
+tagline:             每天前进一小步
+description:
+baseurl:            
+url:                http://localhost:4000 #"https://whuxgxj.github.io"  
+github:
+  url:              http://localhost:4000 #"https://whuxgxj.github.io"
+author:
+  name:              "jian11"
+  email:             "whuxgxj@gmail.com"
+  github:            "whuxgxj"
+  facebook:          "shiyi.jian.3"
+  linkedin:          "jian-xiao-0712b684"
+  weibo:             "5207524903"
+  googleplus:        "104263801333485322810"
+navigation:
+- title: 首页
+  url: /
+- title: 博客
+  url: /writing
+- title: 关于
+  url: /about
+- title: 联系我
+  url: /contact
+
+paginate:            5
+disqus:              tomorrow2future
+
+# Build settings
+markdown:            kramdown
+highlighter:         rouge
+permalink:           none
+gems:                [jekyll-paginate]
