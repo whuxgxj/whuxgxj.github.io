@@ -4,7 +4,7 @@ title: "关于基于树的建模的完整教程（从R＆Python）"
 categories: journal
 tags: [documentation,sample]
 image:
-  feature: tree_modeling.jpg
+  feature: tree_modeling.png
   teaser: tree_modeling_teaser.png
   credit:
   creditlink:
