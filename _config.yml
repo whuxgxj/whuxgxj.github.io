@@ -3,9 +3,9 @@ title:               珞珈村下山
 tagline:             每天前进一小步
 description:
 baseurl:            
-url:                 "https://whuxgxj.github.io"  #http://localhost:4000
+url:                 "https://whuxgxj.github.io"
 github:
-  url:              "https://whuxgxj.github.io"  
+  url:               "https://whuxgxj.github.io" 
 author:
   name:              "jian11"
   email:             "whuxgxj@gmail.com"
@@ -31,4 +31,4 @@ disqus:              tomorrow2future
 markdown:            kramdown
 highlighter:         rouge
 permalink:           none
-gems:                [jekyll-paginate]
+gems:                [jekyll-paginate,jekyll-feed,jekyll-sitemap]
