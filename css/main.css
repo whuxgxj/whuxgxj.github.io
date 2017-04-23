@@ -19,6 +19,18 @@ body {
 h1{
   font-size: 1.3rem;
 }
+h2{
+  font-size: 1.2rem;
+}
+h3{
+  font-size: 1.1rem;
+}
+h4{
+  font-size: 1.0rem;
+}
+h5{
+  font-size: 0.9rem;
+}
 
 h1 a {
   text-decoration: none;
@@ -479,8 +491,36 @@ pre {
 .fa-clock-o{
   color: #FF2E63;
 }
+.dataframe {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+    border-left: none;
+    word-break: normal;
+    text-align: center;
+}
+
+.dataframe thead th{
+    vertical-align: middle;
+    text-align: inherit;
+    font-weight: bold;
+    padding: 8px;
+    border: 1px solid #dddddd;
+    line-height: 20px;
+}
+
+.dataframe td {
+    padding: 8px;
+    border: 1px solid #dddddd;
+    line-height: 20px;
+    vertical-align: middle;
+
+}
 
 table{
-  border-collapse: collapse;
-  align-content: left;
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
