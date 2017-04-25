@@ -8,9 +8,6 @@ tags:
   - sample
 image:
   feature: data_cleaning.jpg
-  # teaser: data_cleaning_teaser.jpg
-  credit: null
-  creditlink: null
 ---
 
 ## 定义：

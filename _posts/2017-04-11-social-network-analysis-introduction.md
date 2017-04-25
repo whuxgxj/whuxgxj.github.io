@@ -8,9 +8,6 @@ tags:
   - sample
 image:
   feature: social_network.jpg
-  # teaser: social_network_teaser.jpg
-  credit: null
-  creditlink: null
 ---
 
 ## 1. 社交网络简介

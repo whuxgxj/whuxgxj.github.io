@@ -8,9 +8,6 @@ tags:
   - sample
 image:
   feature: the_matrix.jpg
-  # teaser: the_matrix_teaser.jpg
-  credit: null
-  creditlink: null
 ---
 
 ## 1. 定义(Defination)

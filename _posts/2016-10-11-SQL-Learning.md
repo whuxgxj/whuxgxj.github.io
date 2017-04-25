@@ -8,9 +8,6 @@ tags:
   - sample
 image:
   feature: SQL.png
-  # teaser: SQL_teaser.png
-  credit: null
-  creditlink: null
 ---
 
 ## DML(数据操纵语言)

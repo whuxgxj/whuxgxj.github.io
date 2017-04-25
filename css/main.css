@@ -176,6 +176,15 @@ blockquote p {
   box-shadow: 0 0 0 0, 0 6px 12px rgba(34,34,34,0.1);
 }
 
+.post-one {
+  margin-bottom: 2rem;
+  list-style: none;
+  background-color: #fff;
+  padding: 20px  40px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0, 0 6px 12px rgba(34,34,34,0.1);
+}
+
 .posts h1 a {
     color: #252A34;
 }
@@ -522,10 +531,10 @@ pre {
   color: #FF2E63;
 }*/
 
-.dataframe {
+/*.dataframe {
     width: 100%;
     margin-bottom: 20px;
-    border: 1px solid #373737;
+    border: 1px solid #222;
     border-collapse: collapse;
     border-left: none;
     word-break: normal;
@@ -537,13 +546,13 @@ pre {
     text-align: inherit;
     font-weight: bold;
     padding: 8px;
-    border: 1px solid #dddddd;
+    border: 1px solid #222;
     line-height: 20px;
 }
 
 .dataframe td {
     padding: 8px;
-    border: 1px solid #dddddd;
+    border: 1px solid #222;
     line-height: 20px;
     vertical-align: middle;
 
@@ -554,21 +563,23 @@ table{
     background-color: transparent;
     border-collapse: collapse;
     border-spacing: 0;
-}
+}*/
 
-/*table {
+.dataframe {
     border: 1px solid #373737;
     margin-bottom: 20px;
     text-align: left;
     border-collapse: collapse;
     border-spacing: 0;
 }
-th {
+
+.dataframe th {
     padding: 10px;
     background: #222;
     color: #fff;
 }
-td {
+
+.dataframe td {
     padding: 10px;
     border: 1px solid #222;
-}*/
+}

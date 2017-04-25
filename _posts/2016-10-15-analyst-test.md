@@ -8,9 +8,6 @@ tags:
   - sample
 image:
   feature: data_analyst.jpg
-  # teaser: data_analyst_teaser.jpg
-  credit: null
-  creditlink: null
 ---
 
 ## 考点1 SQL语句

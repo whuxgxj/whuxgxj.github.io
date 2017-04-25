@@ -8,9 +8,6 @@ tags:
   - sample
 image:
   feature: hotel.jpg
-  # teaser: hotel_teaser.jpg
-  credit: null
-  creditlink: null
 ---
 
 ## 和颐酒店女生遇袭事件
