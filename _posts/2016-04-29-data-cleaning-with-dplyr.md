@@ -2,28 +2,29 @@
 layout: post
 title: 使用dplyr包进行数据清理
 categories: journal
+author: shiyi
 tags:
   - documentation
   - sample
 image:
   feature: data_cleaning.jpg
-  teaser: data_cleaning_teaser.jpg
+  # teaser: data_cleaning_teaser.jpg
   credit: null
   creditlink: null
 ---
 
-# 定义：
+## 定义：
 
-- 数据结构
-- 数据语义
+-   数据结构
+-   数据语义
 
-# 整理杂乱的数据集：
+## 整理杂乱的数据集：
 
-## Case 1: 列名称是值，不是变量名
+### Case 1: 列名称是值，不是变量名
 
 {% highlight r linenos %}
 
-# > religion <$10k $10-20k $20-30k $30-40k $40-50k $50-75k
+# > religion \<$10k $10-20k $20-30k $30-40k $40-50k $50-75k
 
 # > (chr) (int) (int) (int) (int) (int) (int)
 
@@ -57,27 +58,27 @@ image:
 
 <!-- more --> 补救措施：
 
-- 使用`gather`函数，gather（数据集，key=变量列名称，value=值列名称,要转换的列）将变量转换为观测值 `gather(data, key, value, ..., na.rm = FALSE, convert = FALSE,factor_key = FALSE)`
-- 新增变量列：`mutate(.data, ...)`
-- 选择所需要的列：`select(.data, ...)`
+-   使用`gather`函数，gather（数据集，key=变量列名称，value=值列名称,要转换的列）将变量转换为观测值 `gather(data, key, value, ..., na.rm = FALSE, convert = FALSE,factor_key = FALSE)`
+-   新增变量列：`mutate(.data, ...)`
+-   选择所需要的列：`select(.data, ...)`
 
-  - `starts_with(x, ignore.case = TRUE)`: names starts with x
-  - `ends_with(x, ignore.case = TRUE)`: names ends in x
-  - `contains(x, ignore.case = TRUE)`: selects all variables whose name contains x
-  - `matches(x, ignore.case = TRUE)`: selects all variables whose name matches the regular expression x
-  - `num_range("x", 1:5, width = 2)`: selects all variables (numerically) from x01 to x05.
-  - `one_of("x", "y", "z")`: selects variables provided in a character vector.
-  - `everything()`: selects all variables.
+    -   `starts_with(x, ignore.case = TRUE)`: names starts with x
+    -   `ends_with(x, ignore.case = TRUE)`: names ends in x
+    -   `contains(x, ignore.case = TRUE)`: selects all variables whose name contains x
+    -   `matches(x, ignore.case = TRUE)`: selects all variables whose name matches the regular expression x
+    -   `num_range("x", 1:5, width = 2)`: selects all variables (numerically) from x01 to x05.
+    -   `one_of("x", "y", "z")`: selects variables provided in a character vector.
+    -   `everything()`: selects all variables.
 
-- 从小到大排序：`arrange(.data, ...)` desc降序
-- 选择符合条件的行：`filter(.data, ...)`,可有多个条件
-- 新增变量列，但删除已有的变量：`transmute(.data, ...)`
-- 变量重命名：`rename(.data, ...)`
-- 选择指定行：`slice(.data, ...)`
-- 计算指定值：`summarise(.data, ...)`
-- 数据分组：`group_by(.data, ..., add = FALSE)`
+-   从小到大排序：`arrange(.data, ...)` desc降序
+-   选择符合条件的行：`filter(.data, ...)`,可有多个条件
+-   新增变量列，但删除已有的变量：`transmute(.data, ...)`
+-   变量重命名：`rename(.data, ...)`
+-   选择指定行：`slice(.data, ...)`
+-   计算指定值：`summarise(.data, ...)`
+-   数据分组：`group_by(.data, ..., add = FALSE)`
 
-## Case 2: 多个变量存储在同一列
+### Case 2: 多个变量存储在同一列
 
 {% highlight r linenos %}
 
@@ -117,9 +118,9 @@ image:
 
 {% endhighlight %}
 
-- 分离变量名： {% highlight r linenos %} separate(data, col, into, sep = "[^[:alnum:]]+",remove = TRUE,convert = FALSE, extra = "warn", fill = "warn", ...) {% endhighlight %}
+-   分离变量名： {% highlight r linenos %} separate(data, col, into, sep = "\[^[:alnum:]]+",remove = TRUE,convert = FALSE, extra = "warn", fill = "warn", ...) {% endhighlight %}
 
-## case 3: 变量同时存在于行和列中
+### case 3: 变量同时存在于行和列中
 
 {% highlight r linenos %}
 
@@ -163,15 +164,15 @@ image:
 
 {% endhighlight %}
 
-- 将原来的列值转换为列名称：`spread(data, key, value, fill = NA, convert = FALSE, drop = TRUE)`
+-   将原来的列值转换为列名称：`spread(data, key, value, fill = NA, convert = FALSE, drop = TRUE)`
 
-## Case 4: 多种类型的观测单元被存储在同一个表中。
+### Case 4: 多种类型的观测单元被存储在同一个表中。
 
 将一个表拆分为多个表
 
-- `Unique()`
-- `Left_join()`
+-   `Unique()`
+-   `Left_join()`
 
-## Case 5: 单个观测单元存储在多个表中。
+### Case 5: 单个观测单元存储在多个表中。
 
-结合plyr包的*ply函数，将多个文件的数据读取到同一个数据集中
+结合plyr包的\*ply函数，将多个文件的数据读取到同一个数据集中

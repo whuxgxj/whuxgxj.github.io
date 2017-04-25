@@ -2,53 +2,53 @@
 layout: post
 title: 泰坦尼克号数据集完整数据科学学习路径
 categories: journal
+author: shiyi
 tags:
   - documentation
   - sample
 image:
   feature: kaggle_titanic.jpg
-  teaser: kaggle_titanic_teaser.jpg
+  # teaser: kaggle_titanic_teaser.jpg
   credit: null
   creditlink: null
 ---
 
-# 1.1 数据科学问题解决思路
+## 1. 数据科学问题解决思路
 
-- 寻找问题或者定义问题
-- 获取训练和测试数据集
-- 预处理，准备，清理数据
-- 分析，识别模式和探索数据
-- 建模，预测和解决问题
-- 可视化，制作报表，呈现问题解决步骤和最终的解决方案
-- 应用或者提交分析结果
+-   寻找问题或者定义问题
+-   获取训练和测试数据集
+-   预处理，准备，清理数据
+-   分析，识别模式和探索数据
+-   建模，预测和解决问题
+-   可视化，制作报表，呈现问题解决步骤和最终的解决方案
+-   应用或者提交分析结果
 
-  以上这些步骤是解决数据科学问题的一般步骤，不过偶尔也有一些例外：
+以上这些步骤是解决数据科学问题的一般步骤，不过偶尔也有一些例外：
 
-- 我们可能将多个阶段结合到一块儿使用，我们可以通过可视化的方式分析数据
+-   我们可能将多个阶段结合到一块儿使用，我们可以通过可视化的方式分析数据
+-   比预先更早地执行某一阶段的人物，我们可能在wrangle数据之前先analysis
+-   某一阶段执行多次，可视化可能会在多个阶段内
+-   完全放弃某一阶段，我们可能不需要执行所有阶段来得到我们所需要的结果
 
-- 比预先更早地执行某一阶段的人物，我们可能在wrangle数据之前先analysis
-- 某一阶段执行多次，可视化可能会在多个阶段内
-- 完全放弃某一阶段，我们可能不需要执行所有阶段来得到我们所需要的结果
-
-# 1.2 问题及问题的定义
+### 1.1 问题及问题的定义
 
 泰坦尼克号沉船事件是历史上最著名的沉船事件之一。1912年4月15日在他的处女航中与冰山相撞沉没，2224名乘客与船员中有1502人丧生。这一事件震惊了国际社会，并直接导致了船舶业更严格的安全条例的出台。 造成如此重大伤亡的原因之一就是因为没有为乘客和船员准备足够的救生船。在沉船事件中幸存存在一定的随机因素，比如妇女，儿童和上层阶级更容易生存下来。 我们的工作就是预测一个乘客是否能在泰坦尼克号事件中幸存，对于测试集中的每一个PassengerId,都要预测出是否幸存的变量Survived(0,1)。
 
-# 1.3 各阶段目标
+### 1.2 各阶段目标
 
-- 分类(Classifying)。我们可能希望对我们的样品进行分类或分类。我们还可能想要理解不同类别对我们目标的影响或相关。
+-   分类(Classifying)。我们可能希望对我们的样品进行分类或分类。我们还可能想要理解不同类别对我们目标的影响或相关。
 
-- 相关(Correlating)。可以基于训练数据集内的可用特征来处理该问题。 数据集中的哪些功能对我们的解决方案目标有重大影响？ 从统计学的角度看，一个特征和解决方案目标之间有相关性吗？ 随着特征值改变，目标状态也改变，反之亦然？ 这可以测试给定数据集中的数值和分类特征。 我们还可能想要确定除了生存之外的特征之间的相关性以用于后续目标和工作流阶段。 关联某些特征可以帮助创建，完成或校正特征。
+-   相关(Correlating)。可以基于训练数据集内的可用特征来处理该问题。 数据集中的哪些功能对我们的解决方案目标有重大影响？ 从统计学的角度看，一个特征和解决方案目标之间有相关性吗？ 随着特征值改变，目标状态也改变，反之亦然？ 这可以测试给定数据集中的数值和分类特征。 我们还可能想要确定除了生存之外的特征之间的相关性以用于后续目标和工作流阶段。 关联某些特征可以帮助创建，完成或校正特征。
 
-- 转换(Converting)。对于建模阶段，需要准备数据。根据模型算法的选择，可能需要将所有特征转换为数值等效值。因此，例如将文本分类值转换为数值。
+-   转换(Converting)。对于建模阶段，需要准备数据。根据模型算法的选择，可能需要将所有特征转换为数值等效值。因此，例如将文本分类值转换为数值。
 
-- 完成(Completing)。数据准备还可能需要我们估计特征内的任何缺失值。当没有缺失值时，模型算法可能最有效。
+-   完成(Completing)。数据准备还可能需要我们估计特征内的任何缺失值。当没有缺失值时，模型算法可能最有效。
 
-- 纠正(Correcting)。我们还可以分析给定的训练数据集中的特征内的错误或可能是完备的值，并试图改变这些值或排除包含错误的样本。一种方法是检测我们的样品或特征中的任何离群值。如果一个特征不是对分析有影响，或者可能显着地偏斜结果，我们也可以完全丢弃该特征。
+-   纠正(Correcting)。我们还可以分析给定的训练数据集中的特征内的错误或可能是完备的值，并试图改变这些值或排除包含错误的样本。一种方法是检测我们的样品或特征中的任何离群值。如果一个特征不是对分析有影响，或者可能显着地偏斜结果，我们也可以完全丢弃该特征。
 
-- 创建(Creating)。我们可以基于现有特征或一组特征创建新特征，以使新特征遵循相关性，转换，完整性目标。
+-   创建(Creating)。我们可以基于现有特征或一组特征创建新特征，以使新特征遵循相关性，转换，完整性目标。
 
-- 图表(Charting)。如何根据数据的性质和解决方案目标选择正确的可视化图表和图表。一个好的开始是阅读Tableau论文，哪个图表或图表适合您？
+-   图表(Charting)。如何根据数据的性质和解决方案目标选择正确的可视化图表和图表。一个好的开始是阅读Tableau论文，哪个图表或图表适合您？
 
 {% highlight python linenos %}
 
@@ -62,52 +62,52 @@ import seaborn as sns import matplotlib.pyplot as plt %matplotlib inline
 
 # 机器学习
 
-from sklearn.linear_model import LogisticRegression from sklearn.svm import SVC, LinearSVC from sklearn.ensemble import RandomForestClassifier from sklearn.neighbors import KNeighborsClassifier from sklearn.naive_bayes import GaussianNB from sklearn.linear_model import Perceptron from sklearn.linear_model import SGDClassifier from sklearn.tree import DecisionTreeClassifier {% endhighlight %}
+from sklearn.linear_model import LogisticRegression from sklearn.svm import SVC, LinearSVC from sklearn.ensemble import RandomForestClassifier from sklearn.neighbors import KNeighborsClassifier from sklearn.naive_bayes import GaussianNB from sklearn.linear_model import Perceptron from sklearn.linear_model import SGDClassifier from sklearn.tree import DecisionTreeClassifier
 
-## 读取数据
+# 读取数据
 
-{% highlight python linenos %} train_df = pd.read_csv('./data/train.csv') test_df = pd.read_csv('./data/test.csv') combine = [train_df, test_df] {% endhighlight %}
+train_df = pd.read_csv('./data/train.csv') test_df = pd.read_csv('./data/test.csv') combine = [train_df, test_df]
 
-### 2 描述性数据分析
+{% endhighlight %}
 
-#### 2.1 数据集中包含哪些特征
+## 2. 描述性数据分析
 
-##### 哪些是分类变量
+### 2.1 数据集中包含哪些特征
+
+#### 哪些是分类变量
 
 分类变量可分为名义变量，排序变量，比率变量或者区间值
 
-- 分类变量: Survived, Sex, and Embarked. 排序变量: Pclass
+-   分类变量: Survived, Sex, and Embarked. 排序变量: Pclass
 
-##### 哪些是数值变量
+#### 哪些是数值变量
 
 连续性变量，离散变量，时间序列
 
-- Continous: Age, Fare. Discrete: SibSp, Parch.
+-   Continous: Age, Fare. Discrete: SibSp, Parch.
 
-##### 哪些变量是混合数据类型
+#### 哪些变量是混合数据类型
 
-- Ticket is a mix of numeric and alphanumeric data types. Cabin is alphanumeric.
+-   Ticket is a mix of numeric and alphanumeric data types. Cabin is alphanumeric.
 
-##### 哪些变量可能包含有错误或者错别字
+#### 哪些变量可能包含有错误或者错别字
 
-- Name feature may contain errors or typos as there are several ways used to describe a name including titles, round brackets, and quotes used for alternative or short names.
+-   Name feature may contain errors or typos as there are several ways used to describe a name including titles, round brackets, and quotes used for alternative or short names.
 
-##### 哪些变量包含空白或者空值
+#### 哪些变量包含空白或者空值
 
-- Cabin > Age > Embarked features contain a number of null values in that order for the training dataset.
-- Cabin > Age are incomplete in case of test dataset.
+-   Cabin > Age > Embarked features contain a number of null values in that order for the training dataset.
+-   Cabin > Age are incomplete in case of test dataset.
 
-##### 各个变量的数据类型
+#### 各个变量的数据类型
 
-- Seven features are integer or floats. Six in case of test dataset.
-- Five features are strings (object).
+-   Seven features are integer or floats. Six in case of test dataset.
+-   Five features are strings (object).
 
 {% highlight python linenos %} print train_df.columns.values {% endhighlight %}
 
-```
-['PassengerId' 'Survived' 'Pclass' 'Name' 'Sex' 'Age' 'SibSp' 'Parch'
- 'Ticket' 'Fare' 'Cabin' 'Embarked']
-```
+    ['PassengerId' 'Survived' 'Pclass' 'Name' 'Sex' 'Age' 'SibSp' 'Parch'
+     'Ticket' 'Fare' 'Cabin' 'Embarked']
 
 {% highlight python linenos %}
 
@@ -131,54 +131,52 @@ train_df.head() {% endhighlight %}
 </table>
 </div>
 
-{% highlight python linenos %} train_df.info() print '_'*40 test_df.info() {% endhighlight %}
+{% highlight python linenos %} train_df.info() print '_'\*40 test_df.info() {% endhighlight %}
 
-```
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 891 entries, 0 to 890
-Data columns (total 12 columns):
-PassengerId    891 non-null int64
-Survived       891 non-null int64
-Pclass         891 non-null int64
-Name           891 non-null object
-Sex            891 non-null object
-Age            714 non-null float64
-SibSp          891 non-null int64
-Parch          891 non-null int64
-Ticket         891 non-null object
-Fare           891 non-null float64
-Cabin          204 non-null object
-Embarked       889 non-null object
-dtypes: float64(2), int64(5), object(5)
-memory usage: 83.6+ KB
-________________________________________
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 418 entries, 0 to 417
-Data columns (total 11 columns):
-PassengerId    418 non-null int64
-Pclass         418 non-null int64
-Name           418 non-null object
-Sex            418 non-null object
-Age            332 non-null float64
-SibSp          418 non-null int64
-Parch          418 non-null int64
-Ticket         418 non-null object
-Fare           417 non-null float64
-Cabin          91 non-null object
-Embarked       418 non-null object
-dtypes: float64(2), int64(4), object(5)
-memory usage: 36.0+ KB
-```
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 891 entries, 0 to 890
+    Data columns (total 12 columns):
+    PassengerId    891 non-null int64
+    Survived       891 non-null int64
+    Pclass         891 non-null int64
+    Name           891 non-null object
+    Sex            891 non-null object
+    Age            714 non-null float64
+    SibSp          891 non-null int64
+    Parch          891 non-null int64
+    Ticket         891 non-null object
+    Fare           891 non-null float64
+    Cabin          204 non-null object
+    Embarked       889 non-null object
+    dtypes: float64(2), int64(5), object(5)
+    memory usage: 83.6+ KB
+    ________________________________________
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 418 entries, 0 to 417
+    Data columns (total 11 columns):
+    PassengerId    418 non-null int64
+    Pclass         418 non-null int64
+    Name           418 non-null object
+    Sex            418 non-null object
+    Age            332 non-null float64
+    SibSp          418 non-null int64
+    Parch          418 non-null int64
+    Ticket         418 non-null object
+    Fare           417 non-null float64
+    Cabin          91 non-null object
+    Embarked       418 non-null object
+    dtypes: float64(2), int64(4), object(5)
+    memory usage: 36.0+ KB
 
-## 数值型变量的分布
+### 数值型变量的分布
 
-- 样本包含891份数据或者2224名登船乘客中的40%.
-- Survived是一个分类变量，0表示，1表示幸存.
-- 样本中大约32%的人幸存代表着总体船员的幸存率大约为32%.
-- 大部分乘客(>75%)并没有随父母或孩子一起出行.
-- 大约30%的乘客有伴侣或者兄弟姐妹在船上.
-- 部分乘客(<1%)的船费存在很大差异,最高的高达$512.
-- 65-80岁乘客占所有乘客的不到1%
+-   样本包含891份数据或者2224名登船乘客中的40%.
+-   Survived是一个分类变量，0表示，1表示幸存.
+-   样本中大约32%的人幸存代表着总体船员的幸存率大约为32%.
+-   大部分乘客(>75%)并没有随父母或孩子一起出行.
+-   大约30%的乘客有伴侣或者兄弟姐妹在船上.
+-   部分乘客(\<1%)的船费存在很大差异,最高的高达$512.
+-   65-80岁乘客占所有乘客的不到1%
 
 {% highlight python linenos %} train_df.describe()
 
@@ -192,10 +190,8 @@ memory usage: 36.0+ KB
 
 {% endhighlight %}
 
-```
-/usr/local/lib/python2.7/dist-packages/numpy/lib/function_base.py:3834: RuntimeWarning: Invalid value encountered in percentile
-  RuntimeWarning)
-```
+    /usr/local/lib/python2.7/dist-packages/numpy/lib/function_base.py:3834: RuntimeWarning: Invalid value encountered in percentile
+      RuntimeWarning)
 
 <div>
   <table border="1" class="dataframe">
@@ -204,12 +200,12 @@ memory usage: 36.0+ KB
 </table>
 </div>
 
-## 分类变量的分布
+### 分类变量的分布
 
-- Names在数据集中是唯一的(count=unique=891)
-- 性别变量（Sex）是个二值变量,65%的人是男性(top=male, freq=577/count=891)
-- 仓室号码(Cabin)在样本中有多次重复，多位乘客可以共享一个仓室
-- 登船城市（Embarked）有三个可能的值,S是最多的港口
+-   Names在数据集中是唯一的(count=unique=891)
+-   性别变量（Sex）是个二值变量,65%的人是男性(top=male, freq=577/count=891)
+-   仓室号码(Cabin)在样本中有多次重复，多位乘客可以共享一个仓室
+-   登船城市（Embarked）有三个可能的值,S是最多的港口
 
 {% highlight python linenos %} train_df.describe(include=['O']) {% endhighlight %}
 
@@ -222,42 +218,42 @@ memory usage: 36.0+ KB
 
 ### 2.2 基于数据分析的假设
 
-- Correlating. 我们想知道每个特征与生存之间的关系。我们希望在项目的早期做到这一点，并在项目后期将这些快速相关性与建模的相关性相匹配。
+-   Correlating. 我们想知道每个特征与生存之间的关系。我们希望在项目的早期做到这一点，并在项目后期将这些快速相关性与建模的相关性相匹配。
 
-- Completing
+-   Completing
 
-  - 我们可能希望Complete Age变量，因为它与生存密切相关。
-  - 我们可能希望complete Embarked变量，因为它也可能与生存或另一个重要变量相关。
+    -   我们可能希望Complete Age变量，因为它与生存密切相关。
+    -   我们可能希望complete Embarked变量，因为它也可能与生存或另一个重要变量相关。
 
-- Correlating
+-   Correlating
 
-  - Ticket可能会从我们的分析中删除，因为它包含高比例的重复（22％），票券和生存之间可能没有相关性。
-  - Cabin可能被丢弃，因为它是非常不完整的或在训练和测试数据集中包含许多空值。
-  - PassengerId可以从训练数据集中删除，因为它不会有助于生存。
-  - Name 相对不标准，可能不直接有助于生存，因此也许会被丢弃。
+    -   Ticket可能会从我们的分析中删除，因为它包含高比例的重复（22％），票券和生存之间可能没有相关性。
+    -   Cabin可能被丢弃，因为它是非常不完整的或在训练和测试数据集中包含许多空值。
+    -   PassengerId可以从训练数据集中删除，因为它不会有助于生存。
+    -   Name 相对不标准，可能不直接有助于生存，因此也许会被丢弃。
 
-- Creating
+-   Creating
 
-  - 我们可能想创建一个基于Parch和SibSp的新变量Family，以获取船上家庭成员的总数。
-  - 我们可能需要从Name中提取Title作为新变量。
-  - 我们可能想为年龄创建新变量年龄段。这将连续的数字特征转换为有序的分类特征。
-  - 我们可能还想创建一个Fare范围的变量，如果它有助于我们的分析。
+    -   我们可能想创建一个基于Parch和SibSp的新变量Family，以获取船上家庭成员的总数。
+    -   我们可能需要从Name中提取Title作为新变量。
+    -   我们可能想为年龄创建新变量年龄段。这将连续的数字特征转换为有序的分类特征。
+    -   我们可能还想创建一个Fare范围的变量，如果它有助于我们的分析。
 
-- Classifying 我们还可以基于前面提到的问题描述来添加我们的假设。
+-   Classifying 我们还可以基于前面提到的问题描述来添加我们的假设。
 
-  - 女性（Sex=female）更有可能存活。
-  - 儿童（Age<？）更有可能生存。
-  - 上层乘客（Pclass = 1）更有可能存活。
+    -   女性（Sex=female）更有可能存活。
+    -   儿童（Age\<？）更有可能生存。
+    -   上层乘客（Pclass = 1）更有可能存活。
 
 ### 2.3 通过透视表分析
 
 为了确认我们的一些观察和假设，我们可以通过变量之间的列联表来探索各变量之间的关系。在这个阶段我们只能对没有空值的变量这样做。仅对于分类（Sex），序数（Pclass）或离散（SibSp，Parch）类型的变量有意义。
 
-- **Pclass**我们观察到Pclass = 1和Survived（Classifying #3）之间的显着相关性（> 0.5）。 我们决定在模型中包含这个特征。
-- **Sex**我们确认在问题定义期间的观察性别=女性有非常高的生存率在74％（Classifying #1）。
-- **SibSp**和**Parch**这些功能对于某些值具有零相关性。 最好从这些单独的特征（ Creating #1）中导出一个特征或一组特征。
+-   **Pclass**我们观察到Pclass = 1和Survived（Classifying #3）之间的显着相关性（> 0.5）。 我们决定在模型中包含这个特征。
+-   **Sex**我们确认在问题定义期间的观察性别=女性有非常高的生存率在74％（Classifying #1）。
+-   **SibSp**和**Parch**这些功能对于某些值具有零相关性。 最好从这些单独的特征（ Creating #1）中导出一个特征或一组特征。
 
-{% highlight python linenos %} train_df[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
+{% highlight python linenos %} train_df\[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -266,7 +262,7 @@ memory usage: 36.0+ KB
 </table>
 </div>
 
-{% highlight python linenos %} train_df[["Sex", "Survived"]].groupby(['Sex'], as_index=False).mean().sort_values(by='Survived', ascending=False)
+{% highlight python linenos %} train_df\[["Sex", "Survived"]].groupby(['Sex'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 
 {% endhighlight %}
 
@@ -277,7 +273,7 @@ memory usage: 36.0+ KB
 </table>
 </div>
 
-{% highlight python linenos %} train_df[["SibSp", "Survived"]].groupby(['SibSp'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
+{% highlight python linenos %} train_df\[["SibSp", "Survived"]].groupby(['SibSp'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -286,7 +282,7 @@ memory usage: 36.0+ KB
 </table>
 </div>
 
-{% highlight python linenos %} train_df[["Parch", "Survived"]].groupby(['Parch'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
+{% highlight python linenos %} train_df\[["Parch", "Survived"]].groupby(['Parch'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -303,22 +299,20 @@ memory usage: 36.0+ KB
 
 **观察**
 
-- 年龄小于四岁的婴儿具有较高的存活率
-- 最老的乘客（80岁）活了下来
-- 大部分15-25岁之间的年轻人遇难
-- 大部分乘客都在15-35岁之间
+-   年龄小于四岁的婴儿具有较高的存活率
+-   最老的乘客（80岁）活了下来
+-   大部分15-25岁之间的年轻人遇难
+-   大部分乘客都在15-35岁之间
 
 **结论**
 
-- 我们应该在我们的模型中考虑年龄（Classifying #2）
-- 为年龄变量填充空值(completing #1)
-- 我们要对年龄进行分组(creating #3)
+-   我们应该在我们的模型中考虑年龄（Classifying #2）
+-   为年龄变量填充空值(completing #1)
+-   我们要对年龄进行分组(creating #3)
 
 {% highlight python linenos %} g = sns.FacetGrid(train_df, col='Survived') g.map(plt.hist, 'Age', bins=20) {% endhighlight %}
 
-```
-<seaborn.axisgrid.FacetGrid at 0x7f15cd138250>
-```
+    <seaborn.axisgrid.FacetGrid at 0x7f15cd138250>
 
 ![png](../images/output_20_1.png)
 
@@ -326,14 +320,14 @@ memory usage: 36.0+ KB
 
 **观察**
 
-- 第三等级乘客占了总体的大多数，但他们大多没有幸存，验证了我们的（Classifying #2）
-- 第二和第三等级乘客中的大部分婴儿都存活了,进一步验证了Classifying #2
-- 大部分第一等级的乘客都存活了，验证了Classifying #3
-- 乘客的等级随年龄变化而变化
+-   第三等级乘客占了总体的大多数，但他们大多没有幸存，验证了我们的（Classifying #2）
+-   第二和第三等级乘客中的大部分婴儿都存活了,进一步验证了Classifying #2
+-   大部分第一等级的乘客都存活了，验证了Classifying #3
+-   乘客的等级随年龄变化而变化
 
 **结论**
 
-- 在模型训练中考虑乘客等级
+-   在模型训练中考虑乘客等级
 
 {% highlight python linenos %}
 
@@ -347,15 +341,15 @@ grid = sns.FacetGrid(train_df, col='Survived', row='Pclass', size=2.2, aspect=1.
 
 **观察**
 
-- 女性乘客的生存概率要高于男性，证明classifying #1
-- 在Cherbourg登船的男性有更高的存活率，这可能是乘客等级与登船港口之间的相关性，反过来作用于乘客等级和生存概率没并不意味着登船港口和是否幸存有直接的关系
-- 和第二等级的人相比，在Queenstown和Cherbourg登船的第三等级男性乘客有更高的存活率（Completing #2）
-- 第三等级的乘客和男性乘客会因登船港口不同，幸存概率存在很大的差异
+-   女性乘客的生存概率要高于男性，证明classifying #1
+-   在Cherbourg登船的男性有更高的存活率，这可能是乘客等级与登船港口之间的相关性，反过来作用于乘客等级和生存概率没并不意味着登船港口和是否幸存有直接的关系
+-   和第二等级的人相比，在Queenstown和Cherbourg登船的第三等级男性乘客有更高的存活率（Completing #2）
+-   第三等级的乘客和男性乘客会因登船港口不同，幸存概率存在很大的差异
 
 **结论**
 
-- 将性别特征添加到模型中
-- 填充登船港口然后添加到模型中
+-   将性别特征添加到模型中
+-   填充登船港口然后添加到模型中
 
 {% highlight python linenos %}
 
@@ -363,9 +357,7 @@ grid = sns.FacetGrid(train_df, col='Survived', row='Pclass', size=2.2, aspect=1.
 
 grid = sns.FacetGrid(train_df, row='Embarked', size=2.2, aspect=1.6) grid.map(sns.pointplot, 'Pclass', 'Survived', 'Sex', palette='deep') grid.add_legend() {% endhighlight %}
 
-```
-<seaborn.axisgrid.FacetGrid at 0x7f15c8ff5590>
-```
+    <seaborn.axisgrid.FacetGrid at 0x7f15c8ff5590>
 
 ![png](../images/output_24_1.png)
 
@@ -373,12 +365,12 @@ grid = sns.FacetGrid(train_df, row='Embarked', size=2.2, aspect=1.6) grid.map(sn
 
 **观察**
 
-- 高票价的乘客有更高的生存概率(creating #4)
-- 登船的港口与生存的概率相关（correlating #1,completing #2）
+-   高票价的乘客有更高的生存概率(creating #4)
+-   登船的港口与生存的概率相关（correlating #1,completing #2）
 
 **结论**
 
-- 考虑将票价分组
+-   考虑将票价分组
 
 {% highlight python linenos %}
 
@@ -386,13 +378,11 @@ grid = sns.FacetGrid(train_df, row='Embarked', size=2.2, aspect=1.6) grid.map(sn
 
 grid = sns.FacetGrid(train_df, row='Embarked', col='Survived', size=2.2, aspect=1.6) grid.map(sns.barplot, 'Sex', 'Fare', alpha=.5, ci=None) grid.add_legend() {% endhighlight %}
 
-```
-<seaborn.axisgrid.FacetGrid at 0x7f15c8d43210>
-```
+    <seaborn.axisgrid.FacetGrid at 0x7f15c8d43210>
 
 ![png](../images/output_26_1.png)
 
-## 3 数据预处理
+## 3. 数据预处理
 
 我们已经收集了满足我们的数据集和解决方案要求的几个假设和决定。到目前为止，我们没有必要改变一个单一的变量或值来达到这些。让我们现在执行我们的决定和假设，以纠正，创建和完成目标。
 
@@ -410,10 +400,8 @@ train_df = train_df.drop(['Ticket', 'Cabin'], axis=1) test_df = test_df.drop(['T
 
 print "After", train_df.shape, test_df.shape, combine[0].shape, combine[1].shape {% endhighlight %}
 
-```
-Before (891, 12) (418, 11) (891, 12) (418, 11)
-After (891, 10) (418, 9) (891, 10) (418, 9)
-```
+    Before (891, 12) (418, 11) (891, 12) (418, 11)
+    After (891, 10) (418, 9) (891, 10) (418, 9)
 
 ### 3.2 从已存在的变量中分离出新变量
 
@@ -421,12 +409,12 @@ After (891, 10) (418, 9) (891, 10) (418, 9)
 
 **观察**
 
-- 大多数头衔有着明确的年龄指向，比如Master的平均年龄是5岁
-- 每个头衔都有明确的生存概率，比如Title为（Mme,Lady,Sir）的人大都存活了，而Title为（Don,Rev,Jonkheer）大多遇难了
+-   大多数头衔有着明确的年龄指向，比如Master的平均年龄是5岁
+-   每个头衔都有明确的生存概率，比如Title为（Mme,Lady,Sir）的人大都存活了，而Title为（Don,Rev,Jonkheer）大多遇难了
 
 **结论**
 
-- 我们决定保留Tittle作为模型之一
+-   我们决定保留Tittle作为模型之一
 
 {% highlight python linenos %} for dataset in combine: dataset['Title'] = dataset.Name.str.extract(' ([A-Za-z]+).', expand=False)
 
@@ -441,13 +429,11 @@ pd.crosstab(train_df['Title'], train_df['Sex']) {% endhighlight %}
 
 {% highlight python linenos %} for dataset in combine: dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',\ 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
 
-```
-dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
-dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
-dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
-```
+    dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
+    dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
+    dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
 
-train_df[['Title', 'Survived']].groupby(['Title'], as_index=False).mean() {% endhighlight %}
+train_df\[['Title', 'Survived']].groupby(['Title'], as_index=False).mean() {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -469,9 +455,7 @@ train_df.head() {% endhighlight %}
 
 {% highlight python linenos %} train_df = train_df.drop(['Name', 'PassengerId'], axis=1) test_df = test_df.drop(['Name'], axis=1) combine = [train_df, test_df] train_df.shape, test_df.shape {% endhighlight %}
 
-```
-((891, 9), (418, 9))
-```
+    ((891, 9), (418, 9))
 
 ### 3.3 将分类变量转换为数值
 
@@ -494,9 +478,9 @@ train_df.head() {% endhighlight %}
 
 我们有三种方法来填充连续型的数值变量（存在缺失值）
 
-- 一个简单的方法就是生成平均值和标准差之间的随机数
-- 另外填充缺失值的更准确的方法便是使用相关变量的值来预估，在本例中，我们注意到年龄，性别，和等级之间存在较强的相关性，因此便可以使用性别与等级对应组别年龄的中位数来代替，例如Pclass=1&gender=0的年龄的中位数，Pclass=1&gender=1的年龄的中位数......
-- 结合以上两种方法。不是基于中位数猜值，而是基于Pclass和gender的组合，使用平均值与标准差之间的随机数
+-   一个简单的方法就是生成平均值和标准差之间的随机数
+-   另外填充缺失值的更准确的方法便是使用相关变量的值来预估，在本例中，我们注意到年龄，性别，和等级之间存在较强的相关性，因此便可以使用性别与等级对应组别年龄的中位数来代替，例如Pclass=1&gender=0的年龄的中位数，Pclass=1&gender=1的年龄的中位数......
+-   结合以上两种方法。不是基于中位数猜值，而是基于Pclass和gender的组合，使用平均值与标准差之间的随机数
 
 方法一和方法三可能给我们的模型带来噪声，多次执行的结果可能不同，因此这里采用方法二
 
@@ -506,38 +490,32 @@ train_df.head() {% endhighlight %}
 
 grid = sns.FacetGrid(train_df, row='Pclass', col='Sex', size=2.2, aspect=1.6) grid.map(plt.hist, 'Age', alpha=.5, bins=20) grid.add_legend() {% endhighlight %}
 
-```
-<seaborn.axisgrid.FacetGrid at 0x7f15cd1f4d90>
-```
+    <seaborn.axisgrid.FacetGrid at 0x7f15cd1f4d90>
 
 ![png](../images/output_37_1.png)
 
 {% highlight python linenos %} guess_ages = np.zeros((2,3)) guess_ages {% endhighlight %}
 
-```
-array([[ 0.,  0.,  0.],
-       [ 0.,  0.,  0.]])
-```
+    array([[ 0.,  0.,  0.],
+           [ 0.,  0.,  0.]])
 
-{% highlight python linenos %} for dataset in combine: for i in range(0, 2): for j in range(0, 3): guess_df = dataset[(dataset['Sex'] == i) & \ (dataset['Pclass'] == j+1)]['Age'].dropna()
+{% highlight python linenos %} for dataset in combine: for i in range(0, 2): for j in range(0, 3): guess_df = dataset[(dataset\['Sex'\] == i) & \\ (dataset\['Pclass'\] == j+1)]['age'].dropna()
 
-```
-        # age_mean = guess_df.mean()
-        # age_std = guess_df.std()
-        # age_guess = rnd.uniform(age_mean - age_std, age_mean + age_std)
+            # age_mean = guess_df.mean()
+            # age_std = guess_df.std()
+            # age_guess = rnd.uniform(age_mean - age_std, age_mean + age_std)
 
-        age_guess = guess_df.median()
+            age_guess = guess_df.median()
 
-        # Convert random age float to nearest .5 age
-        guess_ages[i,j] = int( age_guess/0.5 + 0.5 ) * 0.5
+            # Convert random age float to nearest .5 age
+            guess_ages[i,j] = int( age_guess/0.5 + 0.5 ) * 0.5
 
-for i in range(0, 2):
-    for j in range(0, 3):
-        dataset.loc[ (dataset.Age.isnull()) & (dataset.Sex == i) & (dataset.Pclass == j+1),\
-                'Age'] = guess_ages[i,j]
+    for i in range(0, 2):
+        for j in range(0, 3):
+            dataset.loc[ (dataset.Age.isnull()) & (dataset.Sex == i) & (dataset.Pclass == j+1),\
+                    'Age'] = guess_ages[i,j]
 
-dataset['Age'] = dataset['Age'].astype(int)
-```
+    dataset['Age'] = dataset['Age'].astype(int)
 
 train_df.head() {% endhighlight %}
 
@@ -548,7 +526,7 @@ train_df.head() {% endhighlight %}
 </table>
 </div>
 
-{% highlight python linenos %} train_df['AgeBand'] = pd.cut(train_df['Age'], 5) train_df[['AgeBand', 'Survived']].groupby(['AgeBand'], as_index=False).mean().sort_values(by='AgeBand', ascending=True) {% endhighlight %}
+{% highlight python linenos %} train_df['AgeBand'] = pd.cut(train_df['Age'], 5) train_df\[['AgeBand', 'Survived']].groupby(['AgeBand'], as_index=False).mean().sort_values(by='AgeBand', ascending=True) {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -557,7 +535,7 @@ train_df.head() {% endhighlight %}
 </table>
 </div>
 
-{% highlight python linenos %} for dataset in combine: dataset.loc[ dataset['Age'] <= 16, 'Age'] = 0 dataset.loc[(dataset['Age'] > 16) & (dataset['Age'] <= 32), 'Age'] = 1 dataset.loc[(dataset['Age'] > 32) & (dataset['Age'] <= 48), 'Age'] = 2 dataset.loc[(dataset['Age'] > 48) & (dataset['Age'] <= 64), 'Age'] = 3 dataset.loc[ dataset['Age'] > 64, 'Age'] train_df.head() {% endhighlight %}
+{% highlight python linenos %} for dataset in combine: dataset.loc\[ dataset['Age'] \<= 16, 'Age'] = 0 dataset.loc\[(dataset['Age'] > 16) & (dataset['Age'] \<= 32), 'Age'] = 1 dataset.loc\[(dataset['Age'] > 32) & (dataset['Age'] \<= 48), 'Age'] = 2 dataset.loc\[(dataset['Age'] > 48) & (dataset['Age'] \<= 64), 'Age'] = 3 dataset.loc\[ dataset['Age'] > 64, 'Age'] train_df.head() {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -581,7 +559,7 @@ train_df.head() {% endhighlight %}
 
 {% highlight python linenos %} for dataset in combine: dataset['FamilySize'] = dataset['SibSp'] + dataset['Parch'] + 1
 
-train_df[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
+train_df\[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean().sort_values(by='Survived', ascending=False) {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -590,9 +568,9 @@ train_df[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mea
 </table>
 </div>
 
-{% highlight python linenos %} for dataset in combine: dataset['IsAlone'] = 0 dataset.loc[dataset['FamilySize'] == 1, 'IsAlone'] = 1
+{% highlight python linenos %} for dataset in combine: dataset['IsAlone'] = 0 dataset.loc\[dataset['FamilySize'] == 1, 'IsAlone'] = 1
 
-train_df[['IsAlone', 'Survived']].groupby(['IsAlone'], as_index=False).mean() {% endhighlight %}
+train_df\[['IsAlone', 'Survived']].groupby(['IsAlone'], as_index=False).mean() {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -612,9 +590,9 @@ train_df.head() {% endhighlight %}
 </table>
 </div>
 
-{% highlight python linenos %} for dataset in combine: dataset['Age_Class'] = dataset.Age_ dataset.Pclass
+{% highlight python linenos %} for dataset in combine: dataset['Age_Class'] = dataset.Age\_ dataset.Pclass
 
-train_df.loc[:, ['Age*Class', 'Age', 'Pclass']].head(10) {% endhighlight %}
+train_df.loc\[:, ['Age*Class', 'Age', 'Pclass']].head(10) {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -629,13 +607,11 @@ Embarked有两个缺失值，我们用出现次数最多的值进行填充
 
 {% highlight python linenos %} freq_port = train_df.Embarked.dropna().mode()[0] freq_port {% endhighlight %}
 
-```
-'S'
-```
+    'S'
 
 {% highlight python linenos %} for dataset in combine: dataset['Embarked'] = dataset['Embarked'].fillna(freq_port)
 
-train_df[['Embarked', 'Survived']].groupby(['Embarked'], as_index=False).mean().sort_values(by='Survived', ascending=False)
+train_df\[['Embarked', 'Survived']].groupby(['Embarked'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 
 {% endhighlight %}
 
@@ -670,7 +646,7 @@ train_df.head() {% endhighlight %}
 </table>
 </div>
 
-{% highlight python linenos %} train_df['FareBand'] = pd.qcut(train_df['Fare'], 4) train_df[['FareBand', 'Survived']].groupby(['FareBand'], as_index=False).mean().sort_values(by='FareBand', ascending=True) {% endhighlight %}
+{% highlight python linenos %} train_df['FareBand'] = pd.qcut(train_df['Fare'], 4) train_df\[['FareBand', 'Survived']].groupby(['FareBand'], as_index=False).mean().sort_values(by='FareBand', ascending=True) {% endhighlight %}
 
 <div>
   <table border="1" class="dataframe">
@@ -679,7 +655,7 @@ train_df.head() {% endhighlight %}
 </table>
 </div>
 
-{% highlight python linenos %} for dataset in combine: dataset.loc[ dataset['Fare'] <= 7.91, 'Fare'] = 0 dataset.loc[(dataset['Fare'] > 7.91) & (dataset['Fare'] <= 14.454), 'Fare'] = 1 dataset.loc[(dataset['Fare'] > 14.454) & (dataset['Fare'] <= 31), 'Fare'] = 2 dataset.loc[ dataset['Fare'] > 31, 'Fare'] = 3 dataset['Fare'] = dataset['Fare'].astype(int)
+{% highlight python linenos %} for dataset in combine: dataset.loc\[ dataset['Fare'] \<= 7.91, 'Fare'] = 0 dataset.loc\[(dataset['Fare'] > 7.91) & (dataset['Fare'] \<= 14.454), 'Fare'] = 1 dataset.loc\[(dataset['Fare'] > 14.454) & (dataset['Fare'] \<= 31), 'Fare'] = 2 dataset.loc\[ dataset['Fare'] > 31, 'Fare'] = 3 dataset['Fare'] = dataset['Fare'].astype(int)
 
 train_df = train_df.drop(['FareBand'], axis=1) combine = [train_df, test_df]
 
@@ -703,25 +679,21 @@ train_df.head(10) {% endhighlight %}
 
 ### 建模，预测，解决问题
 
-```
-现在我们准备好训练模型并预测所需的解决方案。有60多种预测建模算法可供选择。我们必须了解问题的类型和解决方案的要求，以缩小到一些我们可以评估的几个模型。 我们的问题是分类和回归问题。 我们想要识别输出（存在与否）与其他变量或特征（性别，年龄，港口...）之间的关系。 我们也在进行一个类别的机器学习，这被称为监督学习，因为我们训练我们的模型与给定的数据集。 有了这两个标准 - 监督学习加分类和回归，我们可以将我们的模型选择范围缩小到几个。 这些包括：
-```
+    现在我们准备好训练模型并预测所需的解决方案。有60多种预测建模算法可供选择。我们必须了解问题的类型和解决方案的要求，以缩小到一些我们可以评估的几个模型。 我们的问题是分类和回归问题。 我们想要识别输出（存在与否）与其他变量或特征（性别，年龄，港口...）之间的关系。 我们也在进行一个类别的机器学习，这被称为监督学习，因为我们训练我们的模型与给定的数据集。 有了这两个标准 - 监督学习加分类和回归，我们可以将我们的模型选择范围缩小到几个。 这些包括：
 
-- 逻辑回归
-- KNN或k-最近邻
-- 支持向量机
-- 朴素贝叶斯分类器
-- 决策树
-- 随机森林
-- 感知器
-- 人工神经网络
-- RVM或相关向量机
+-   逻辑回归
+-   KNN或k-最近邻
+-   支持向量机
+-   朴素贝叶斯分类器
+-   决策树
+-   随机森林
+-   感知器
+-   人工神经网络
+-   RVM或相关向量机
 
 {% highlight python linenos %} X_train = train_df.drop("Survived", axis=1) Y_train = train_df["Survived"] X_test = test_df.drop("PassengerId", axis=1).copy() X_train.shape, Y_train.shape, X_test.shape {% endhighlight %}
 
-```
-((891, 8), (891,), (418, 8))
-```
+    ((891, 8), (891,), (418, 8))
 
 逻辑回归是在工作流早期运行的有用模型。 逻辑回归通过使用对数函数（其是累积对数分布）估计概率来测量分类依赖变量（特征）和一个或多个独立变量（特征）之间的关系。 参考维基百科。
 
@@ -731,20 +703,18 @@ train_df.head(10) {% endhighlight %}
 
 # Logistic Regression
 
-logreg = LogisticRegression() logreg.fit(X_train, Y_train) Y_pred = logreg.predict(X_test) acc_log = round(logreg.score(X_train, Y_train) * 100, 2) acc_log {% endhighlight %}
+logreg = LogisticRegression() logreg.fit(X_train, Y_train) Y_pred = logreg.predict(X_test) acc_log = round(logreg.score(X_train, Y_train) \* 100, 2) acc_log {% endhighlight %}
 
-```
-80.36
-```
+    80.36
 
 我们可以使用逻辑回归来验证我们的假设和决定，以创建和完成目标。 这可以通过计算决策函数中的特征的系数来完成。
 
 正系数增加响应的对数（因此增加概率），负系数减小响应的对数（因此减少概率）。
 
-- 性别是最高积极系数，意味着性价值增加（男性：0至女性：1），存活= 1的概率增加最多。
-- 相反，当Pclass增加时，Survived = 1的概率降低最多。
-- 这样Age * Class是一个很好的模拟人工特征，因为它与Survived具有第二高的负相关。
-- 所以标题是第二高的正相关。
+-   性别是最高积极系数，意味着性价值增加（男性：0至女性：1），存活= 1的概率增加最多。
+-   相反，当Pclass增加时，Survived = 1的概率降低最多。
+-   这样Age \* Class是一个很好的模拟人工特征，因为它与Survived具有第二高的负相关。
+-   所以标题是第二高的正相关。
 
 {% highlight python linenos %} coeff_df = pd.DataFrame(train_df.columns.delete(0)) coeff_df.columns = ['Feature'] coeff_df["Correlation"] = pd.Series(logreg.coef_[0])
 
@@ -765,21 +735,17 @@ coeff_df.sort_values(by='Correlation', ascending=False) {% endhighlight %}
 
 # Support Vector Machines
 
-svc = SVC() svc.fit(X_train, Y_train) Y_pred = svc.predict(X_test) acc_svc = round(svc.score(X_train, Y_train) * 100, 2) acc_svc {% endhighlight %}
+svc = SVC() svc.fit(X_train, Y_train) Y_pred = svc.predict(X_test) acc_svc = round(svc.score(X_train, Y_train) \* 100, 2) acc_svc {% endhighlight %}
 
-```
-83.84
-```
+    83.84
 
 在模式识别中，k-Nearest Neighbors算法（或简称为k-NN）是用于分类和回归的非参数方法。 样本通过其邻居的多数投票来分类，其中样本被分配给在其k个最近邻居中最常见的类（k是正整数，通常是小的）。 如果k = 1，则将对象简单地分配给该单个最近邻的类。 参考维基百科。
 
 KNN置信得分优于物流回归，但比SVM差。
 
-{% highlight python linenos %} knn = KNeighborsClassifier(n_neighbors = 3) knn.fit(X_train, Y_train) Y_pred = knn.predict(X_test) acc_knn = round(knn.score(X_train, Y_train) * 100, 2) acc_knn {% endhighlight %}
+{% highlight python linenos %} knn = KNeighborsClassifier(n_neighbors = 3) knn.fit(X_train, Y_train) Y_pred = knn.predict(X_test) acc_knn = round(knn.score(X_train, Y_train) \* 100, 2) acc_knn {% endhighlight %}
 
-```
-84.74
-```
+    84.74
 
 在机器学习中，朴素贝叶斯分类器是基于应用贝叶斯定理的简单概率分类器的族，其在特征之间具有强的（天真的）独立假设。 朴素贝叶斯分类器是高度可扩展的，需要在学习问题中的变量（特征）数量的线性的多个参数。 参考维基百科。
 
@@ -789,11 +755,9 @@ KNN置信得分优于物流回归，但比SVM差。
 
 # Gaussian Naive Bayes
 
-gaussian = GaussianNB() gaussian.fit(X_train, Y_train) Y_pred = gaussian.predict(X_test) acc_gaussian = round(gaussian.score(X_train, Y_train) * 100, 2) acc_gaussian {% endhighlight %}
+gaussian = GaussianNB() gaussian.fit(X_train, Y_train) Y_pred = gaussian.predict(X_test) acc_gaussian = round(gaussian.score(X_train, Y_train) \* 100, 2) acc_gaussian {% endhighlight %}
 
-```
-72.28
-```
+    72.28
 
 感知器是用于二进制分类器的监督学习的算法（可以决定由数字向量表示的输入是否属于某个特定类的函数）。 它是一种线性分类器，即，基于将一组权重与特征向量组合的线性预测器函数进行其预测的分类算法。 该算法允许在线学习，因为它一次处理训练集中的元素。 参考维基百科。
 
@@ -801,31 +765,25 @@ gaussian = GaussianNB() gaussian.fit(X_train, Y_train) Y_pred = gaussian.predict
 
 # Perceptron
 
-perceptron = Perceptron() perceptron.fit(X_train, Y_train) Y_pred = perceptron.predict(X_test) acc_perceptron = round(perceptron.score(X_train, Y_train) * 100, 2) acc_perceptron {% endhighlight %}
+perceptron = Perceptron() perceptron.fit(X_train, Y_train) Y_pred = perceptron.predict(X_test) acc_perceptron = round(perceptron.score(X_train, Y_train) \* 100, 2) acc_perceptron {% endhighlight %}
 
-```
-78.0
-```
+    78.0
 
 {% highlight python linenos %}
 
 # Linear SVC
 
-linear_svc = LinearSVC() linear_svc.fit(X_train, Y_train) Y_pred = linear_svc.predict(X_test) acc_linear_svc = round(linear_svc.score(X_train, Y_train) * 100, 2) acc_linear_svc {% endhighlight %}
+linear_svc = LinearSVC() linear_svc.fit(X_train, Y_train) Y_pred = linear_svc.predict(X_test) acc_linear_svc = round(linear_svc.score(X_train, Y_train) \* 100, 2) acc_linear_svc {% endhighlight %}
 
-```
-79.12
-```
+    79.12
 
 {% highlight python linenos %}
 
 # Stochastic Gradient Descent
 
-sgd = SGDClassifier() sgd.fit(X_train, Y_train) Y_pred = sgd.predict(X_test) acc_sgd = round(sgd.score(X_train, Y_train) * 100, 2) acc_sgd {% endhighlight %}
+sgd = SGDClassifier() sgd.fit(X_train, Y_train) Y_pred = sgd.predict(X_test) acc_sgd = round(sgd.score(X_train, Y_train) \* 100, 2) acc_sgd {% endhighlight %}
 
-```
-65.77
-```
+    65.77
 
 该模型使用决策树作为将特征（树分支）映射到关于目标值（树叶）的结论的预测模型。 目标变量可以取有限集合值的树模型称为分类树; 在这些树结构中，叶表示类标签，而分支表示导致那些类标签的特征的连接。 目标变量可以取连续值（通常为实数）的决策树称为回归树。 参考维基百科。
 
@@ -835,11 +793,9 @@ sgd = SGDClassifier() sgd.fit(X_train, Y_train) Y_pred = sgd.predict(X_test) acc
 
 # Decision Tree
 
-decision_tree = DecisionTreeClassifier() decision_tree.fit(X_train, Y_train) Y_pred = decision_tree.predict(X_test) acc_decision_tree = round(decision_tree.score(X_train, Y_train) * 100, 2) acc_decision_tree {% endhighlight %}
+decision_tree = DecisionTreeClassifier() decision_tree.fit(X_train, Y_train) Y_pred = decision_tree.predict(X_test) acc_decision_tree = round(decision_tree.score(X_train, Y_train) \* 100, 2) acc_decision_tree {% endhighlight %}
 
-```
-86.76
-```
+    86.76
 
 下一个模型随机森林是最受欢迎的之一。 随机森林或随机决策林是用于分类，回归和其他任务的整体学习方法，其通过在训练时构造多个决策树（n_estimators = 100）并输出作为类的模式的类（分类）来操作， 或单个树的平均预测（回归）。 参考维基百科。
 
@@ -849,11 +805,9 @@ decision_tree = DecisionTreeClassifier() decision_tree.fit(X_train, Y_train) Y_p
 
 # Random Forest
 
-random_forest = RandomForestClassifier(n_estimators=100) random_forest.fit(X_train, Y_train) Y_pred = random_forest.predict(X_test) random_forest.score(X_train, Y_train) acc_random_forest = round(random_forest.score(X_train, Y_train) * 100, 2) acc_random_forest {% endhighlight %}
+random_forest = RandomForestClassifier(n_estimators=100) random_forest.fit(X_train, Y_train) Y_pred = random_forest.predict(X_test) random_forest.score(X_train, Y_train) acc_random_forest = round(random_forest.score(X_train, Y_train) \* 100, 2) acc_random_forest {% endhighlight %}
 
-```
-86.76
-```
+    86.76
 
 ## 模型评估
 

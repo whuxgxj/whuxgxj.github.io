@@ -2,12 +2,13 @@
 layout: post
 title: PyQt的信号和槽机制
 categories: journal
+author: shiyi
 tags:
   - documentation
   - sample
 image:
   feature: riverbank_pyqt.png
-  teaser: riverbank_pyqt_teaser.png
+  # teaser: riverbank_pyqt_teaser.png
   credit: null
   creditlink: null
 ---
@@ -31,33 +32,31 @@ QDial和QSpinBox小部件都有valueChanged（）信号，当发出时，它们�
 
 class Form(QDialog):
 
-```
-def __init__(self, parent=None):
-    super(Form, self).__init__(parent)
-    dial = QDial()
-    dial.setNotchesVisible(True)
-    spinbox = QSpinBox()
-    layout = QHBoxLayout()
-    layout.addWidget(dial)
-    layout.addWidget(spinbox)
-    self.setLayout(layout)
-    self.connect(dial, SIGNAL("valueChanged(int)"),
-                 spinbox.setValue)
-    self.connect(spinbox, SIGNAL("valueChanged(int)"), dial.setValue)
-    self.setWindowTitle("Signals and Slots")
-```
+    def __init__(self, parent=None):
+        super(Form, self).__init__(parent)
+        dial = QDial()
+        dial.setNotchesVisible(True)
+        spinbox = QSpinBox()
+        layout = QHBoxLayout()
+        layout.addWidget(dial)
+        layout.addWidget(spinbox)
+        self.setLayout(layout)
+        self.connect(dial, SIGNAL("valueChanged(int)"),
+                     spinbox.setValue)
+        self.connect(spinbox, SIGNAL("valueChanged(int)"), dial.setValue)
+        self.setWindowTitle("Signals and Slots")
 
-app = QApplication(sys.argv) form = Form() form.show() app.exec_() {% endhighlight %}
+app = QApplication(sys.argv) form = Form() form.show() app.exec\_() {% endhighlight %}
 
 由于两个小部件以这种方式连接，如果用户把Dial移动到20,Dial将发出一个valueChanged（20）的信号，这将反过来导致调用Spinbox的setValue（）槽，以20作为参数。 但是，因为它的值现在已经改变，Spinbox将发出一个valueChanged（20）信号，这反过来将调用Dial的setValue（）插槽，以20作为参数。所以看起来我们会得到一个无限循环。但是实际上如果值没有实际改变，valueChanged（）信号不会被发射。这是因为写入值改变槽的标准方法是通过将新值与现有值进行比较开始的。如果值相同，我们什么都不做，并返回; 否则，我们应用改变并发出信号以宣布状态的改变。连接如图4.7所示。
 
 ![](../images/riverbank_pyqt_2.png)
 
-现在让我们看看连接的一般语法。 我们假设PyQt模块已经使用**from ... import *** 语法导入，并且s和w是QObjects，通常是小部件，s通常是self:
+现在让我们看看连接的一般语法。 我们假设PyQt模块已经使用**from ... import \*** 语法导入，并且s和w是QObjects，通常是小部件，s通常是self:
 
 {% highlight python linenos %} s.connect(w, SIGNAL("signalSignature"), functionName) s.connect(w, SIGNAL("signalSignature"), instance.methodName) s.connect(w, SIGNAL("signalSignature"),instance, SLOT("slotSignature")) {% endhighlight %}
 
-signalSignature是信号的名称，以及括号中的逗号分隔的参数类型名称列表（可能为空）。 如果信号是一个Qt信号，类型名称必须是C++类型名称，如int和QString。 C++类型名称可能相当复杂，每个类型名称可能包括一个或多个**const**，*****和**＆**。当我们将它们写为信号（或槽）签名时，我们可以丢弃任何**const**s和**＆**s，但必须保留任何*****s。例如，通过QString的几乎每个Qt信号都使用const QString的参数类型，但是在PyQt中，仅仅使用QString就足够了。 另一方面，QListWidget具有带有签名itemActivated（QListWidgetItem *）的信号，并且我们必须写入与这个完全一样的信号。 PyQt信号在它们被实际发射时被定义，并且可以具有任何数量的任何类型的参数，如我们将很快看到的。 slotSignature与signalSignature具有相同的形式，除了名称是Qt时隙。 插槽可以不具有比连接到其的信号更多的自变量，但是可以具有更少的自变量; 那么将丢弃额外的参数。相应的信号和槽参数必须具有相同的类型，例如，我们无法将QDial的valueChanged（int）信号连接到QLineEdit的setText（QString）槽。 在我们的dial和spinbox示例中，我们使用instance.methodName语法，就像我们对本章前面所示的示例应用程序一样。 但是当槽实际上是一个Qt槽而不是一个Python方法时，使用SLOT（）语法更有效：
+signalSignature是信号的名称，以及括号中的逗号分隔的参数类型名称列表（可能为空）。 如果信号是一个Qt信号，类型名称必须是C++类型名称，如int和QString。 C++类型名称可能相当复杂，每个类型名称可能包括一个或多个**const**，**\***和**＆**。当我们将它们写为信号（或槽）签名时，我们可以丢弃任何**const**s和**＆**s，但必须保留任何**\***s。例如，通过QString的几乎每个Qt信号都使用const QString的参数类型，但是在PyQt中，仅仅使用QString就足够了。 另一方面，QListWidget具有带有签名itemActivated（QListWidgetItem \*）的信号，并且我们必须写入与这个完全一样的信号。 PyQt信号在它们被实际发射时被定义，并且可以具有任何数量的任何类型的参数，如我们将很快看到的。 slotSignature与signalSignature具有相同的形式，除了名称是Qt时隙。 插槽可以不具有比连接到其的信号更多的自变量，但是可以具有更少的自变量; 那么将丢弃额外的参数。相应的信号和槽参数必须具有相同的类型，例如，我们无法将QDial的valueChanged（int）信号连接到QLineEdit的setText（QString）槽。 在我们的dial和spinbox示例中，我们使用instance.methodName语法，就像我们对本章前面所示的示例应用程序一样。 但是当槽实际上是一个Qt槽而不是一个Python方法时，使用SLOT（）语法更有效：
 
 {% highlight python linenos %} self.connect(dial, SIGNAL("valueChanged(int)"),spinbox, SLOT("setValue(int)")) self.connect(spinbox, SIGNAL("valueChanged(int)"),dial, SLOT("setValue(int)")) {% endhighlight %}
 
@@ -65,7 +64,7 @@ signalSignature是信号的名称，以及括号中的逗号分隔的参数类�
 
 {% highlight python linenos %} class ZeroSpinBox(QSpinBox): zeros = 0 def **init**(self, parent=None): super(ZeroSpinBox, self).**init**(parent) self.connect(self, SIGNAL("valueChanged(int)"), self.checkzero) def checkzero(self): if self.value() == 0: self.zeros += 1 self.emit(SIGNAL("atzero"), self.zeros) {% endhighlight %}
 
-我们连接到Spinbox自己的valueChanged（）信号，并将其调用我们的checkzero（）插槽。 如果值恰好为0，则checkzero（）槽发出零值信号，以及它已经为零的次数的计数; 传递这样的附加数据是可选的。 缺少信号的括号很重要：它告诉PyQt这是一个"短路"信号。 没有参数（因此没有括号）的信号是短路Python信号。 当发出这样的信号时，任何数据都可以作为附加参数传递给**emit（）**方法，并且它们作为Python对象传递。 这避免了将参数转换为**C ++**数据类型和从**C ++**数据类型转换的开销，并且还意味着可以传递任意Python对象，甚至不能转换为**C ++**数据类型的对象。 具有至少一个自变量的信号是Qt信号或非短路Python信号。 在这些情况下，PyQt将检查信号是否是Qt信号，如果不是，则会假定它是一个Python信号。 在任何一种情况下，参数都将转换为**C ++**数据类型。 下面是我们如何连接到窗体的**__init__（）**方法中的信号：
+我们连接到Spinbox自己的valueChanged（）信号，并将其调用我们的checkzero（）插槽。 如果值恰好为0，则checkzero（）槽发出零值信号，以及它已经为零的次数的计数; 传递这样的附加数据是可选的。 缺少信号的括号很重要：它告诉PyQt这是一个"短路"信号。 没有参数（因此没有括号）的信号是短路Python信号。 当发出这样的信号时，任何数据都可以作为附加参数传递给**emit（）**方法，并且它们作为Python对象传递。 这避免了将参数转换为**C ++**数据类型和从**C ++**数据类型转换的开销，并且还意味着可以传递任意Python对象，甚至不能转换为**C ++**数据类型的对象。 具有至少一个自变量的信号是Qt信号或非短路Python信号。 在这些情况下，PyQt将检查信号是否是Qt信号，如果不是，则会假定它是一个Python信号。 在任何一种情况下，参数都将转换为**C ++**数据类型。 下面是我们如何连接到窗体的\***\*init**（）\*\*方法中的信号：
 
 {% highlight python linenos %} zerospinbox = ZeroSpinBox() ... self.connect(zerospinbox, SIGNAL("atzero"), self.announce) {% endhighlight %}
 
@@ -75,9 +74,9 @@ signalSignature是信号的名称，以及括号中的逗号分隔的参数类�
 
 如果我们使用带有标识符但没有括号的**SIGNAL（）**函数，我们如前所述指定短路信号。 我们可以使用这种语法来发出短路信号，并连接到它们。 这两种用法都在示例中显示。 如果我们使用**SIGNAL（）**函数和**signalSignature**（一个可能是空的大写逗号分隔的PyQt类型列表），我们指定一个Python或Qt信号。 （Python信号是在Python代码中发出的; Qt信号是从底层**C ++**对象发出的信号。）我们可以使用这种语法来发出Python和Qt信号，并连接到它们。 这些信号可以连接到任何可调用的，即任何功能或方法，包括Qt槽; 它们也可以使用**SLOT（）**语法与**slotSignature**连接。 PyQt检查信号是否是Qt信号，如果不是，则假定它是一个Python信号。 如果我们使用括号，即使对于Python信号，参数必须可以转换为**C ++**数据类型。 现在我们来看另一个例子，一个小的自定义非GUI类，它有一个信号和一个槽，并显示该机制不限于GUI类 - 任何QObject子类可以使用信号和槽。
 
-{% highlight python linenos %} class TaxRate(QObject): def **init**(self): super(TaxRate, self).**init**() self.**rate = 17.5 def rate(self): return self.**rate def setRate(self, rate): if rate != self.**rate: self.**rate = rate self.emit(SIGNAL("rateChanged"), self.__rate) {% endhighlight %}
+{% highlight python linenos %} class TaxRate(QObject): def **init**(self): super(TaxRate, self).**init**() self.**rate = 17.5 def rate(self): return self.**rate def setRate(self, rate): if rate != self.**rate: self.**rate = rate self.emit(SIGNAL("rateChanged"), self.\_\_rate) {% endhighlight %}
 
-可以连接**rate（）**和**setRate（）**方法，因为任何Python可调用都可以用作插槽。 如果速率改变，我们更新私有**__rate**值并发出一个自定义的**rateChanged**信号，给出新的速率作为参数。 我们还使用了更快的短路语法。 如果我们想使用标准语法，唯一的区别是信号将被写为**SIGNAL（"rateChanged（float）"）**。 如果我们将**rateChanged**信号连接到**setRate（）**槽，由于**if**语句，不会发生无限循环。 让我们看看使用中的类。 首先，我们将声明一个函数，当速率改变时被调用：
+可以连接**rate（）**和**setRate（）**方法，因为任何Python可调用都可以用作插槽。 如果速率改变，我们更新私有**\_\_rate**值并发出一个自定义的**rateChanged**信号，给出新的速率作为参数。 我们还使用了更快的短路语法。 如果我们想使用标准语法，唯一的区别是信号将被写为**SIGNAL（"rateChanged（float）"）**。 如果我们将**rateChanged**信号连接到**setRate（）**槽，由于**if**语句，不会发生无限循环。 让我们看看使用中的类。 首先，我们将声明一个函数，当速率改变时被调用：
 
 {% highlight python linenos %} def rateChanged(value): print "TaxRate changed to %.2f%%" % value {% endhighlight %}
 
@@ -93,11 +92,11 @@ vat.setRate(8.5)
 
 {% endhighlight %}
 
-这将导致只有一行输出到控制台："**TaxRate**更改为8.50％"。在前面的示例中，我们将多个信号连接到同一个插槽，我们不在乎谁发出信号。 但有时我们想要将两个或多个信号连接到同一个插槽，并且根据调用者的不同，插槽的行为会有所不同。 在本节的最后一个例子中，我们将解决这个问题。 图4.8中显示的**Connections**程序有五个按钮和一个标签。 当点击其中一个按钮时，信号和插槽机制用于更新标签的文本。 下面是如何在窗体的**__init__（）**方法中创建第一个按钮：
+这将导致只有一行输出到控制台："**TaxRate**更改为8.50％"。在前面的示例中，我们将多个信号连接到同一个插槽，我们不在乎谁发出信号。 但有时我们想要将两个或多个信号连接到同一个插槽，并且根据调用者的不同，插槽的行为会有所不同。 在本节的最后一个例子中，我们将解决这个问题。 图4.8中显示的**Connections**程序有五个按钮和一个标签。 当点击其中一个按钮时，信号和插槽机制用于更新标签的文本。 下面是如何在窗体的\***\*init**（）\*\*方法中创建第一个按钮：
 
 {% highlight python linenos %} button1 = QPushButton("One") {% endhighlight %}
 
-所有其他按钮都以相同的方式创建，不同之处仅在于它们的变量名称和传递给它们的文本。 我们将从最简单的连接开始，这是由button1使用。 这里是**__init__（）**方法的**connect（）**调用：
+所有其他按钮都以相同的方式创建，不同之处仅在于它们的变量名称和传递给它们的文本。 我们将从最简单的连接开始，这是由button1使用。 这里是\***\*init**（）**方法的**connect（）\*\*调用：
 
 {% highlight python linenos %} self.connect(button1, SIGNAL("clicked()"), self.one) {% endhighlight %}
 
@@ -107,7 +106,7 @@ vat.setRate(8.5)
 
 将按钮的clicked（）信号连接到适当响应的单个方法可能是最常见的连接情况。但是如果大多数处理是相同的，只是一些参数化取决于按下哪个特定按钮？ 在这种情况下，通常最好将每个按钮连接到同一个插槽。 有两种方法可以做到这一点。 一个是使用部分函数应用程序来包装具有参数的插槽，以便在调用插槽时，使用调用它的按钮对其进行参数化。 另一个是要求PyQt告诉我们哪个按钮称为插槽。 我们将展示这两种方法，从偏函数应用(partial function application)开始。 回到第65页，我们创建了一个包装器函数，它使用Python 2.5的functools.partial（）函数或者我们自己简单的partial（）函数：
 
-{% highlight python linenos %} import sys if sys.version_info[:2] < (2, 5): def partial(func, arg): def callme(): return func(arg) return callme else: from functools import partial {% endhighlight %}
+{% highlight python linenos %} import sys if sys.version_info[:2] \< (2, 5): def partial(func, arg): def callme(): return func(arg) return callme else: from functools import partial {% endhighlight %}
 
 使用partial（）我们现在可以将一个插槽和一个按钮名称。 所以我们可能会试着这样做：
 
