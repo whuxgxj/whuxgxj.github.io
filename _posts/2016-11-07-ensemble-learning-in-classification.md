@@ -10,7 +10,9 @@ image:
   feature: ensemble_learning.png
 ---
 
-**Author: Dr. Robi Polikar, Rowan University** 集成学习是由多个模型（如分类器或专家）策略性地生成和组合以解决特定计算性的智能问题的过程。集成学习主要用于改进模型（分类，预测，函数近似等）的性能，或者减少不良选择变为现实的可能性。集成学习的其他应用包括为模型做出的决策分配置信度，选择最优（或接近最优）特征(feature)，数据融合(data fusion)，增量学习(incremental learning)，非平稳学习(nonstationary learning )和错误校正(error-correcting)。本文着重于集成学习在分类问题的相关应用，然而，下面描述的所有原理思想都可以容易地推广到函数近似或预测类型问题。
+**Author: Dr. Robi Polikar, Rowan University**
+
+集成学习是由多个模型（如分类器或专家）策略性地生成和组合以解决特定计算性的智能问题的过程。集成学习主要用于改进模型（分类，预测，函数近似等）的性能，或者减少不良选择变为现实的可能性。集成学习的其他应用包括为模型做出的决策分配置信度，选择最优（或接近最优）特征(feature)，数据融合(data fusion)，增量学习(incremental learning)，非平稳学习(nonstationary learning )和错误校正(error-correcting)。本文着重于集成学习在分类问题的相关应用，然而，下面描述的所有原理思想都可以容易地推广到函数近似或预测类型问题。
 
 ## 1. 引言
 

@@ -64,6 +64,10 @@ img {
   border-radius: 5px;
 }
 
+p img{
+    text-align: left;
+}
+
 /*
   Blockquote
 */
@@ -184,12 +188,16 @@ blockquote p {
   border-radius: 5px;
   box-shadow: 0 0 0 0, 0 6px 12px rgba(34,34,34,0.1);
 }
+.post-one p{
+    text-indent: 2rem;
+}
 
 .posts h1 a {
     color: #252A34;
 }
 .posts p {
     color: #444F5A;
+    text-indent:2rem;
 }
 
 .post-date {
@@ -571,6 +579,7 @@ table{
     text-align: left;
     border-collapse: collapse;
     border-spacing: 0;
+    overflow-x: auto;
 }
 
 .dataframe th {
