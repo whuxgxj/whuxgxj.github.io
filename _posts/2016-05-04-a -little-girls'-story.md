@@ -1,11 +1,11 @@
 ---
 layout: post
 title: “和颐酒店女生遇袭”事件梳理
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - R
+  - 社交网络
 image:
   feature: hotel.jpg
 ---

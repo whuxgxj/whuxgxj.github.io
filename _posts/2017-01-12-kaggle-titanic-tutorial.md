@@ -1,11 +1,10 @@
 ---
 layout: post
 title: 泰坦尼克号数据集完整数据科学学习路径
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - kaggle
 image:
   feature: kaggle_titanic.jpg
 ---

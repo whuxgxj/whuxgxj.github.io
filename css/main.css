@@ -11,14 +11,9 @@ body {
   background: #e8e8e8;
 }
 
-@media (max-width: 30em) {
-  body {
-    font-size: 14px;
-  }
-}
 
 h1{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 h2{
   font-size: 1.2rem;
@@ -41,6 +36,22 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Ubuntu Mono", "Microsoft YaHei";
   color: #333;
 }
+
+@media (max-width: 30em) {
+  body {
+    font-size: 10px;
+  }
+  h1{
+    font-size: 1.3rem;
+  }
+  h2{
+    font-size: 1.2rem;
+  }
+  h3{
+    font-size: 1.1rem;
+  }
+}
+
 
 a {
   text-decoration: underline;
@@ -128,7 +139,7 @@ blockquote p {
 
 @media (max-width: 48em) {
   .container {
-    width: 75vw;
+    width: 95vw;
   }
 }
 
@@ -158,6 +169,10 @@ blockquote p {
 }
 
 @media (max-width: 30rem) {
+  .masthead {
+      margin-bottom: 1rem;
+    }
+
   .masthead-title small {
     display: none;
   }
@@ -181,24 +196,35 @@ blockquote p {
 }
 
 .post-one {
-  margin-bottom: 2rem;
-  list-style: none;
-  background-color: #fff;
-  padding: 20px  40px;
-  border-radius: 5px;
-  box-shadow: 0 0 0 0, 0 6px 12px rgba(34,34,34,0.1);
+    margin-bottom: 2rem;
+    list-style: none;
+    background-color: #fff;
+    padding: 20px  40px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0, 0 6px 12px rgba(34,34,34,0.1);
 }
+
 .post-one p{
-    text-indent: 2rem;
+    text-indent:2rem;
 }
 
 .posts h1 a {
     color: #252A34;
 }
+
+.posts li p {
+    text-indent: 0;
+}
+
 .posts p {
-    color: #444F5A;
+    color: rgba(0,0,0,.44);
     text-indent:2rem;
 }
+
+.posts p span{
+    text-indent:0;
+}
+
 
 .post-date {
   display: block;
@@ -206,6 +232,41 @@ blockquote p {
   color:#08D9D6;
   font-family: 'Ubuntu Mono', sans-serif;
   font-size:1rem;
+  line-height: 1.1rem;
+}
+
+.post-tags {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: #08D9D6;
+    border: 0.0625rem solid #08D9D6;
+    box-sizing: border-box;
+    border-radius: 0.125rem;
+    text-decoration: none;
+    padding: 1px 4px;
+}
+
+.post-tags:hover{
+    color: inherit;
+}
+
+@media (max-width: 48em) {
+  .posts {
+    margin-bottom: 1rem;
+    padding: 10px  20px;
+  }
+  .post-date {
+    font-size:8px;
+  }
+  .post-tags{
+      display: none;
+  }
+  .fa-tag{
+      display: none;
+  }
+  .post-one {
+      padding: 10px  20px;
+  }
 }
 
 .related {
@@ -230,19 +291,7 @@ blockquote p {
   float: right;
 }
 
-.post-tags {
-    display: inline-block;
-    font-size: 0.7rem;
-    color: #08D9D6;
-    border: 0.0625rem solid #08D9D6;
-    border-radius: 0.125rem;
-    text-decoration: none;
-    padding: 1px 4px;
-}
 
-.post-tags:hover{
-    color: inherit;
-}
 
 /*
   Pagination
@@ -339,6 +388,12 @@ code {
     border-radius: 3px;
     background-color: #f5f5f5;
     font-family: "Ubuntu Mono";
+}
+
+@media (max-width: 30em) {
+  pre,code {
+      font-size: 10px;
+  }
 }
 
 code {

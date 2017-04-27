@@ -18,11 +18,11 @@ navigation:
 - title: 首页
   url: /
 - title: 博客
-  url: /writing
+  url: /archive
+- title: 鸡汤
+  url: /literature
 - title: 关于
   url: /about
-- title: 联系我
-  url: /contact
 
 paginate:            5
 disqus:              tomorrow2future

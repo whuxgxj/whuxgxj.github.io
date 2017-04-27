@@ -1,11 +1,10 @@
 ---
 layout: post
 title: 社交网络分析初探
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - 社交网络
 image:
   feature: social_network.jpg
 ---

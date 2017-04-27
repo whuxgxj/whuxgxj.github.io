@@ -1,11 +1,11 @@
 ---
 layout: post
 title: 使用dplyr包进行数据清理
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - R
+  - 数据清理
 image:
   feature: data_cleaning.jpg
 ---

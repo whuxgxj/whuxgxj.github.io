@@ -1,11 +1,10 @@
 ---
 layout: post
 title: 数据分析笔试
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - 数据分析
 image:
   feature: data_analyst.jpg
 ---

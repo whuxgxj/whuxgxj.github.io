@@ -1,11 +1,11 @@
 ---
 layout: post
 title: R语言交互式绘图包ggvis学习笔记
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - R
+  - 可视化
 image:
   feature: data-visualization.jpg
 ---

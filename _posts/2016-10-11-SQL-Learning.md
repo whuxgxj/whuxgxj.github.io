@@ -1,11 +1,10 @@
 ---
 layout: post
 title: SQL基本操作
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - SQL
 image:
   feature: SQL.png
 ---

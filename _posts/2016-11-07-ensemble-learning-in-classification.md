@@ -1,11 +1,10 @@
 ---
 layout: post
 title: 集成学习(Ensemble learning)相关理论
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - 集成学习
 image:
   feature: ensemble_learning.png
 ---

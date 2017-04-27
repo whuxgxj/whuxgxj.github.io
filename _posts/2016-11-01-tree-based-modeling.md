@@ -1,11 +1,10 @@
 ---
 layout: post
 title: 关于基于树的建模的完整教程（从R＆Python）
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - tree model
 image:
   feature: tree_modeling.png
 ---

@@ -1,11 +1,11 @@
 ---
 layout: post
 title: PyQt的信号和槽机制
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - Python
+  - Qt
 image:
   feature: riverbank_pyqt.png
 ---

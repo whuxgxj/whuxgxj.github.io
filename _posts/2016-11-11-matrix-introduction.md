@@ -1,11 +1,10 @@
 ---
 layout: post
 title: 矩阵相关知识
-categories: journal
+categories: article
 author: shiyi
 tags:
-  - documentation
-  - sample
+  - 矩阵
 image:
   feature: the_matrix.jpg
 ---
