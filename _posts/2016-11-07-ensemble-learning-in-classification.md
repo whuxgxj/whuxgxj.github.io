@@ -36,7 +36,11 @@ image:
 
 参见基于投票的组合规则的证明以及这种方法的详细分析有关的讨论）。在某种意义上，分类系统遵循分治算法，通过将数据空间划分为更小和更容易学习的分区，其中每个分类器仅学习更简单的分区之一。然后底层复杂的决策边界可以通过不同分类器的适当组合来近似。
 
-![](/images/ensemble_learning_2a.png) ![](/images/ensemble_learning_2b.png)
+
+![](/images/ensemble_learning_2a.png)
+
+![](/images/ensemble_learning_2b.png)
+
 
 ### 1.4 数据融合(Data Fusion)
 

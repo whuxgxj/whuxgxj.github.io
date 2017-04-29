@@ -8,7 +8,7 @@ body {
   color: #252A34;/*#222831;/*#3A3A3A;/*rgba(0,0,0,.8);/*#666;*/
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background: #e8e8e8;
+  background: #f4f4f4;
 }
 
 
@@ -76,8 +76,16 @@ img {
 }
 
 p img{
+    max-width: 85%;
     text-align: left;
+    text-indent: 0;
 }
+
+/*@media (max-width: 30em) {
+    p img {
+      max-width: 75%;
+    }
+}*/
 
 /*
   Blockquote
@@ -192,7 +200,7 @@ blockquote p {
   background-color: #fff;
   padding: 20px  40px;
   border-radius: 5px;
-  box-shadow: 0 0 0 0, 0 6px 12px rgba(34,34,34,0.1);
+  box-shadow: 0 0 0 0, 0 6px 12px #dcdcdc;
 }
 
 .post-one {
@@ -206,6 +214,10 @@ blockquote p {
 
 .post-one p{
     text-indent:2rem;
+}
+
+.post-one p img{
+    text-indent:0;
 }
 
 .posts h1 a {
@@ -247,7 +259,7 @@ blockquote p {
 }
 
 .post-tags:hover{
-    color: inherit;
+    border: 0.0625rem solid #FF2E63;
 }
 
 @media (max-width: 48em) {
@@ -258,14 +270,11 @@ blockquote p {
   .post-date {
     font-size:8px;
   }
-  .post-tags{
-      display: none;
-  }
-  .fa-tag{
-      display: none;
-  }
   .post-one {
       padding: 10px  20px;
+  }
+  .post-one p{
+      text-indent: 2rem;
   }
 }
 
@@ -630,7 +639,7 @@ table{
 
 .dataframe {
     border: 1px solid #373737;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     text-align: left;
     border-collapse: collapse;
     border-spacing: 0;

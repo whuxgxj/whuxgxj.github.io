@@ -139,12 +139,14 @@ train_df.head()
 train_df.tail()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>PassengerId</th><th>Survived</th><th>Pclass</th><th>Name</th><th>Sex</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Ticket</th><th>Fare</th><th>Cabin</th><th>Embarked</th></tr></thead>
   <tbody><tr><th>886</th><td>887</td><td>0</td><td>2</td><td>Montvila, Rev. Juozas</td><td>male</td><td>27.0</td><td>0</td><td>0</td><td>211536</td><td>13.00</td><td>NaN</td><td>S</td></tr><tr><th>887</th><td>888</td><td>1</td><td>1</td><td>Graham, Miss. Margaret Edith</td><td>female</td><td>19.0</td><td>0</td><td>0</td><td>112053</td><td>30.00</td><td>B42</td><td>S</td></tr><tr><th>888</th><td>889</td><td>0</td><td>3</td><td>Johnston, Miss. Catherine Helen "Carrie"</td><td>female</td><td>NaN</td><td>1</td><td>2</td><td>W./C. 6607</td><td>23.45</td><td>NaN</td><td>S</td></tr><tr><th>889</th><td>890</td><td>1</td><td>1</td><td>Behr, Mr. Karl Howell</td><td>male</td><td>26.0</td><td>0</td><td>0</td><td>111369</td><td>30.00</td><td>C148</td><td>C</td></tr><tr><th>890</th><td>891</td><td>0</td><td>3</td><td>Dooley, Mr. Patrick</td><td>male</td><td>32.0</td><td>0</td><td>0</td><td>370376</td><td>7.75</td><td>NaN</td><td>Q</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df.info()
@@ -212,13 +214,14 @@ train_df.describe()
 
     /usr/local/lib/python2.7/dist-packages/numpy/lib/function_base.py:3834: RuntimeWarning: Invalid value encountered in percentile
       RuntimeWarning)
-
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>PassengerId</th><th>Survived</th><th>Pclass</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Fare</th></tr></thead>
   <tbody><tr><th>count</th><td>891.000000</td><td>891.000000</td><td>891.000000</td><td>714.000000</td><td>891.000000</td><td>891.000000</td><td>891.000000</td></tr><tr><th>mean</th><td>446.000000</td><td>0.383838</td><td>2.308642</td><td>29.699118</td><td>0.523008</td><td>0.381594</td><td>32.204208</td></tr><tr><th>std</th><td>257.353842</td><td>0.486592</td><td>0.836071</td><td>14.526497</td><td>1.102743</td><td>0.806057</td><td>49.693429</td></tr><tr><th>min</th><td>1.000000</td><td>0.000000</td><td>1.000000</td><td>0.420000</td><td>0.000000</td><td>0.000000</td><td>0.000000</td></tr><tr><th>25%</th><td>223.500000</td><td>0.000000</td><td>2.000000</td><td>NaN</td><td>0.000000</td><td>0.000000</td><td>7.910400</td></tr><tr><th>50%</th><td>446.000000</td><td>0.000000</td><td>3.000000</td><td>NaN</td><td>0.000000</td><td>0.000000</td><td>14.454200</td></tr><tr><th>75%</th><td>668.500000</td><td>1.000000</td><td>3.000000</td><td>NaN</td><td>1.000000</td><td>0.000000</td><td>31.000000</td></tr><tr><th>max</th><td>891.000000</td><td>1.000000</td><td>3.000000</td><td>80.000000</td><td>8.000000</td><td>6.000000</td><td>512.329200</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ### 分类变量的分布
 
@@ -231,12 +234,14 @@ train_df.describe()
 train_df.describe(include=['O'])
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Name</th><th>Sex</th><th>Ticket</th><th>Cabin</th><th>Embarked</th></tr></thead>
   <tbody><tr><th>count</th><td>891</td><td>891</td><td>891</td><td>204</td><td>889</td></tr><tr><th>unique</th><td>891</td><td>2</td><td>681</td><td>147</td><td>3</td></tr><tr><th>top</th><td>Graham, Mr. George Edward</td><td>male</td><td>CA. 2343</td><td>C23 C25 C27</td><td>S</td></tr><tr><th>freq</th><td>1</td><td>577</td><td>7</td><td>4</td><td>644</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ### 2.2 基于数据分析的假设
 
@@ -279,46 +284,52 @@ train_df.describe(include=['O'])
 train_df\[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Pclass</th><th>Survived</th></tr></thead>
   <tbody><tr><th>0</th><td>1</td><td>0.629630</td></tr><tr><th>1</th><td>2</td><td>0.472826</td></tr><tr><th>2</th><td>3</td><td>0.242363</td></tr></tbody>
 </table>
 </div>
-
+</pre>
 {% highlight python linenos %}
 train_df\[["Sex", "Survived"]].groupby(['Sex'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Sex</th><th>Survived</th></tr></thead>
   <tbody><tr><th>0</th><td>female</td><td>0.742038</td></tr><tr><th>1</th><td>male</td><td>0.188908</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df\[["SibSp", "Survived"]].groupby(['SibSp'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 {% endhighlight %}
-
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>SibSp</th><th>Survived</th></tr></thead>
   <tbody><tr><th>1</th><td>1</td><td>0.535885</td></tr><tr><th>2</th><td>2</td><td>0.464286</td></tr><tr><th>0</th><td>0</td><td>0.345395</td></tr><tr><th>3</th><td>3</td><td>0.250000</td></tr><tr><th>4</th><td>4</td><td>0.166667</td></tr><tr><th>5</th><td>5</td><td>0.000000</td></tr><tr><th>6</th><td>8</td><td>0.000000</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df\[["Parch", "Survived"]].groupby(['Parch'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Parch</th><th>Survived</th></tr></thead>
   <tbody><tr><th>3</th><td>3</td><td>0.600000</td></tr><tr><th>1</th><td>1</td><td>0.550847</td></tr><tr><th>2</th><td>2</td><td>0.500000</td></tr><tr><th>0</th><td>0</td><td>0.343658</td></tr><tr><th>5</th><td>5</td><td>0.200000</td></tr><tr><th>4</th><td>4</td><td>0.000000</td></tr><tr><th>6</th><td>6</td><td>0.000000</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ### 2.4 通过可视化的方式进行分析
 
@@ -468,12 +479,14 @@ for dataset in combine:
 pd.crosstab(train_df['Title'], train_df['Sex'])
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th>Sex</th><th>female</th><th>male</th></tr><tr><th>Title</th><th></th><th></th></tr></thead>
   <tbody><tr><th>Capt</th><td>0</td><td>1</td></tr><tr><th>Col</th><td>0</td><td>2</td></tr><tr><th>Countess</th><td>1</td><td>0</td></tr><tr><th>Don</th><td>0</td><td>1</td></tr><tr><th>Dr</th><td>1</td><td>6</td></tr><tr><th>Jonkheer</th><td>0</td><td>1</td></tr><tr><th>Lady</th><td>1</td><td>0</td></tr><tr><th>Major</th><td>0</td><td>2</td></tr><tr><th>Master</th><td>0</td><td>40</td></tr><tr><th>Miss</th><td>182</td><td>0</td></tr><tr><th>Mlle</th><td>2</td><td>0</td></tr><tr><th>Mme</th><td>1</td><td>0</td></tr><tr><th>Mr</th><td>0</td><td>517</td></tr><tr><th>Mrs</th><td>125</td><td>0</td></tr><tr><th>Ms</th><td>1</td><td>0</td></tr><tr><th>Rev</th><td>0</td><td>6</td></tr><tr><th>Sir</th><td>0</td><td>1</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 for dataset in combine:
@@ -485,12 +498,14 @@ for dataset in combine:
 train_df\[['Title', 'Survived']].groupby(['Title'], as_index=False).mean()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Title</th><th>Survived</th></tr></thead>
   <tbody><tr><th>0</th><td>Master</td><td>0.575000</td></tr><tr><th>1</th><td>Miss</td><td>0.702703</td></tr><tr><th>2</th><td>Mr</td><td>0.156673</td></tr><tr><th>3</th><td>Mrs</td><td>0.793651</td></tr><tr><th>4</th><td>Rare</td><td>0.347826</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 title_mapping = {"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Rare": 5}
@@ -501,12 +516,14 @@ for dataset in combine:
 train_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>PassengerId</th><th>Survived</th><th>Pclass</th><th>Name</th><th>Sex</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Fare</th><th>Embarked</th><th>Title</th></tr></thead>
   <tbody><tr><th>0</th><td>1</td><td>0</td><td>3</td><td>Braund, Mr. Owen Harris</td><td>male</td><td>22.0</td><td>1</td><td>0</td><td>7.2500</td><td>S</td><td>1</td></tr><tr><th>1</th><td>2</td><td>1</td><td>1</td><td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td><td>female</td><td>38.0</td><td>1</td><td>0</td><td>71.2833</td><td>C</td><td>3</td></tr><tr><th>2</th><td>3</td><td>1</td><td>3</td><td>Heikkinen, Miss. Laina</td><td>female</td><td>26.0</td><td>0</td><td>0</td><td>7.9250</td><td>S</td><td>2</td></tr><tr><th>3</th><td>4</td><td>1</td><td>1</td><td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td><td>female</td><td>35.0</td><td>1</td><td>0</td><td>53.1000</td><td>S</td><td>3</td></tr><tr><th>4</th><td>5</td><td>0</td><td>3</td><td>Allen, Mr. William Henry</td><td>male</td><td>35.0</td><td>0</td><td>0</td><td>8.0500</td><td>S</td><td>1</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df = train_df.drop(['Name', 'PassengerId'], axis=1)
@@ -530,12 +547,14 @@ for dataset in combine:
 train_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Survived</th><th>Pclass</th><th>Sex</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Fare</th><th>Embarked</th><th>Title</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>3</td><td>0</td><td>22.0</td><td>1</td><td>0</td><td>7.2500</td><td>S</td><td>1</td></tr><tr><th>1</th><td>1</td><td>1</td><td>1</td><td>38.0</td><td>1</td><td>0</td><td>71.2833</td><td>C</td><td>3</td></tr><tr><th>2</th><td>1</td><td>3</td><td>1</td><td>26.0</td><td>0</td><td>0</td><td>7.9250</td><td>S</td><td>2</td></tr><tr><th>3</th><td>1</td><td>1</td><td>1</td><td>35.0</td><td>1</td><td>0</td><td>53.1000</td><td>S</td><td>3</td></tr><tr><th>4</th><td>0</td><td>3</td><td>0</td><td>35.0</td><td>0</td><td>0</td><td>8.0500</td><td>S</td><td>1</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ### 3.4 填充连续型的数值变量
 
@@ -593,24 +612,28 @@ for dataset in combine:
 train_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Survived</th><th>Pclass</th><th>Sex</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Fare</th><th>Embarked</th><th>Title</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>3</td><td>0</td><td>22</td><td>1</td><td>0</td><td>7.2500</td><td>S</td><td>1</td></tr><tr><th>1</th><td>1</td><td>1</td><td>1</td><td>38</td><td>1</td><td>0</td><td>71.2833</td><td>C</td><td>3</td></tr><tr><th>2</th><td>1</td><td>3</td><td>1</td><td>26</td><td>0</td><td>0</td><td>7.9250</td><td>S</td><td>2</td></tr><tr><th>3</th><td>1</td><td>1</td><td>1</td><td>35</td><td>1</td><td>0</td><td>53.1000</td><td>S</td><td>3</td></tr><tr><th>4</th><td>0</td><td>3</td><td>0</td><td>35</td><td>0</td><td>0</td><td>8.0500</td><td>S</td><td>1</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df['AgeBand'] = pd.cut(train_df['Age'], 5)
 train_df\[['AgeBand', 'Survived']].groupby(['AgeBand'], as_index=False).mean().sort_values(by='AgeBand', ascending=True)
  {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>AgeBand</th><th>Survived</th></tr></thead>
   <tbody><tr><th>0</th><td>(-0.08, 16]</td><td>0.550000</td></tr><tr><th>1</th><td>(16, 32]</td><td>0.337374</td></tr><tr><th>2</th><td>(32, 48]</td><td>0.412037</td></tr><tr><th>3</th><td>(48, 64]</td><td>0.434783</td></tr><tr><th>4</th><td>(64, 80]</td><td>0.090909</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 for dataset in combine:
@@ -622,12 +645,14 @@ for dataset in combine:
 train_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Survived</th><th>Pclass</th><th>Sex</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Fare</th><th>Embarked</th><th>Title</th><th>AgeBand</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>3</td><td>0</td><td>1</td><td>1</td><td>0</td><td>7.2500</td><td>S</td><td>1</td><td>(16, 32]</td></tr><tr><th>1</th><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>71.2833</td><td>C</td><td>3</td><td>(32, 48]</td></tr><tr><th>2</th><td>1</td><td>3</td><td>1</td><td>1</td><td>0</td><td>0</td><td>7.9250</td><td>S</td><td>2</td><td>(16, 32]</td></tr><tr><th>3</th><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>53.1000</td><td>S</td><td>3</td><td>(32, 48]</td></tr><tr><th>4</th><td>0</td><td>3</td><td>0</td><td>2</td><td>0</td><td>0</td><td>8.0500</td><td>S</td><td>1</td><td>(32, 48]</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df = train_df.drop(['AgeBand'], axis=1)
@@ -635,12 +660,14 @@ combine = [train_df, test_df]
 train_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Survived</th><th>Pclass</th><th>Sex</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Fare</th><th>Embarked</th><th>Title</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>3</td><td>0</td><td>1</td><td>1</td><td>0</td><td>7.2500</td><td>S</td><td>1</td></tr><tr><th>1</th><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>71.2833</td><td>C</td><td>3</td></tr><tr><th>2</th><td>1</td><td>3</td><td>1</td><td>1</td><td>0</td><td>0</td><td>7.9250</td><td>S</td><td>2</td></tr><tr><th>3</th><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>53.1000</td><td>S</td><td>3</td></tr><tr><th>4</th><td>0</td><td>3</td><td>0</td><td>2</td><td>0</td><td>0</td><td>8.0500</td><td>S</td><td>1</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ## 3.5 结合已有变量生成新变量
 
@@ -653,12 +680,14 @@ for dataset in combine:
 train_df\[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>FamilySize</th><th>Survived</th></tr></thead>
   <tbody><tr><th>3</th><td>4</td><td>0.724138</td></tr><tr><th>2</th><td>3</td><td>0.578431</td></tr><tr><th>1</th><td>2</td><td>0.552795</td></tr><tr><th>6</th><td>7</td><td>0.333333</td></tr><tr><th>0</th><td>1</td><td>0.303538</td></tr><tr><th>4</th><td>5</td><td>0.200000</td></tr><tr><th>5</th><td>6</td><td>0.136364</td></tr><tr><th>7</th><td>8</td><td>0.000000</td></tr><tr><th>8</th><td>11</td><td>0.000000</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 for dataset in combine:
@@ -668,12 +697,14 @@ for dataset in combine:
 train_df\[['IsAlone', 'Survived']].groupby(['IsAlone'], as_index=False).mean()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>IsAlone</th><th>Survived</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>0.505650</td></tr><tr><th>1</th><td>1</td><td>0.303538</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df = train_df.drop(['Parch', 'SibSp', 'FamilySize'], axis=1)
@@ -683,12 +714,14 @@ combine = [train_df, test_df]
 train_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Survived</th><th>Pclass</th><th>Sex</th><th>Age</th><th>Fare</th><th>Embarked</th><th>Title</th><th>IsAlone</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>3</td><td>0</td><td>1</td><td>7.2500</td><td>S</td><td>1</td><td>0</td></tr><tr><th>1</th><td>1</td><td>1</td><td>1</td><td>2</td><td>71.2833</td><td>C</td><td>3</td><td>0</td></tr><tr><th>2</th><td>1</td><td>3</td><td>1</td><td>1</td><td>7.9250</td><td>S</td><td>2</td><td>1</td></tr><tr><th>3</th><td>1</td><td>1</td><td>1</td><td>2</td><td>53.1000</td><td>S</td><td>3</td><td>0</td></tr><tr><th>4</th><td>0</td><td>3</td><td>0</td><td>2</td><td>8.0500</td><td>S</td><td>1</td><td>1</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 for dataset in combine:
@@ -697,12 +730,14 @@ for dataset in combine:
 train_df.loc\[:, ['Age*Class', 'Age', 'Pclass']].head(10)
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Age*Class</th><th>Age</th><th>Pclass</th></tr></thead>
   <tbody><tr><th>0</th><td>3</td><td>1</td><td>3</td></tr><tr><th>1</th><td>2</td><td>2</td><td>1</td></tr><tr><th>2</th><td>3</td><td>1</td><td>3</td></tr><tr><th>3</th><td>2</td><td>2</td><td>1</td></tr><tr><th>4</th><td>6</td><td>2</td><td>3</td></tr><tr><th>5</th><td>3</td><td>1</td><td>3</td></tr><tr><th>6</th><td>3</td><td>3</td><td>1</td></tr><tr><th>7</th><td>0</td><td>0</td><td>3</td></tr><tr><th>8</th><td>3</td><td>1</td><td>3</td></tr><tr><th>9</th><td>0</td><td>0</td><td>2</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ## 3.6 填充分类变量的缺失值
 
@@ -722,13 +757,14 @@ for dataset in combine:
 train_df\[['Embarked', 'Survived']].groupby(['Embarked'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 
 {% endhighlight %}
-
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Embarked</th><th>Survived</th></tr></thead>
   <tbody><tr><th>0</th><td>C</td><td>0.553571</td></tr><tr><th>1</th><td>Q</td><td>0.389610</td></tr><tr><th>2</th><td>S</td><td>0.339009</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 for dataset in combine:
@@ -737,12 +773,14 @@ for dataset in combine:
 train_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Survived</th><th>Pclass</th><th>Sex</th><th>Age</th><th>Fare</th><th>Embarked</th><th>Title</th><th>IsAlone</th><th>Age*Class</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>3</td><td>0</td><td>1</td><td>7.2500</td><td>0</td><td>1</td><td>0</td><td>3</td></tr><tr><th>1</th><td>1</td><td>1</td><td>1</td><td>2</td><td>71.2833</td><td>1</td><td>3</td><td>0</td><td>2</td></tr><tr><th>2</th><td>1</td><td>3</td><td>1</td><td>1</td><td>7.9250</td><td>0</td><td>2</td><td>1</td><td>3</td></tr><tr><th>3</th><td>1</td><td>1</td><td>1</td><td>2</td><td>53.1000</td><td>0</td><td>3</td><td>0</td><td>2</td></tr><tr><th>4</th><td>0</td><td>3</td><td>0</td><td>2</td><td>8.0500</td><td>0</td><td>1</td><td>1</td><td>6</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ## 3.7 快速替换和转换数值变量
 
@@ -753,24 +791,28 @@ test_df['Fare'].fillna(test_df['Fare'].dropna().median(), inplace=True)
 test_df.head()
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>PassengerId</th><th>Pclass</th><th>Sex</th><th>Age</th><th>Fare</th><th>Embarked</th><th>Title</th><th>IsAlone</th><th>Age*Class</th></tr></thead>
   <tbody><tr><th>0</th><td>892</td><td>3</td><td>0</td><td>2</td><td>7.8292</td><td>2</td><td>1</td><td>1</td><td>6</td></tr><tr><th>1</th><td>893</td><td>3</td><td>1</td><td>2</td><td>7.0000</td><td>0</td><td>3</td><td>0</td><td>6</td></tr><tr><th>2</th><td>894</td><td>2</td><td>0</td><td>3</td><td>9.6875</td><td>2</td><td>1</td><td>1</td><td>6</td></tr><tr><th>3</th><td>895</td><td>3</td><td>0</td><td>1</td><td>8.6625</td><td>0</td><td>1</td><td>1</td><td>3</td></tr><tr><th>4</th><td>896</td><td>3</td><td>1</td><td>1</td><td>12.2875</td><td>0</td><td>3</td><td>0</td><td>3</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 train_df['FareBand'] = pd.qcut(train_df['Fare'], 4)
 train_df\[['FareBand', 'Survived']].groupby(['FareBand'], as_index=False).mean().sort_values(by='FareBand', ascending=True)
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>FareBand</th><th>Survived</th></tr></thead>
   <tbody><tr><th>0</th><td>[0, 7.91]</td><td>0.197309</td></tr><tr><th>1</th><td>(7.91, 14.454]</td><td>0.303571</td></tr><tr><th>2</th><td>(14.454, 31]</td><td>0.454955</td></tr><tr><th>3</th><td>(31, 512.329]</td><td>0.581081</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 for dataset in combine:
@@ -786,23 +828,27 @@ combine = [train_df, test_df]
 train_df.head(10)
  {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Survived</th><th>Pclass</th><th>Sex</th><th>Age</th><th>Fare</th><th>Embarked</th><th>Title</th><th>IsAlone</th><th>Age*Class</th></tr></thead>
   <tbody><tr><th>0</th><td>0</td><td>3</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td></tr><tr><th>1</th><td>1</td><td>1</td><td>1</td><td>2</td><td>3</td><td>1</td><td>3</td><td>0</td><td>2</td></tr><tr><th>2</th><td>1</td><td>3</td><td>1</td><td>1</td><td>1</td><td>0</td><td>2</td><td>1</td><td>3</td></tr><tr><th>3</th><td>1</td><td>1</td><td>1</td><td>2</td><td>3</td><td>0</td><td>3</td><td>0</td><td>2</td></tr><tr><th>4</th><td>0</td><td>3</td><td>0</td><td>2</td><td>1</td><td>0</td><td>1</td><td>1</td><td>6</td></tr><tr><th>5</th><td>0</td><td>3</td><td>0</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>3</td></tr><tr><th>6</th><td>0</td><td>1</td><td>0</td><td>3</td><td>3</td><td>0</td><td>1</td><td>1</td><td>3</td></tr><tr><th>7</th><td>0</td><td>3</td><td>0</td><td>0</td><td>2</td><td>0</td><td>4</td><td>0</td><td>0</td></tr><tr><th>8</th><td>1</td><td>3</td><td>1</td><td>1</td><td>1</td><td>0</td><td>3</td><td>0</td><td>3</td></tr><tr><th>9</th><td>1</td><td>2</td><td>1</td><td>0</td><td>2</td><td>1</td><td>3</td><td>0</td><td>0</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 test_df.head(10)
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>PassengerId</th><th>Pclass</th><th>Sex</th><th>Age</th><th>Fare</th><th>Embarked</th><th>Title</th><th>IsAlone</th><th>Age*Class</th></tr></thead>
   <tbody><tr><th>0</th><td>892</td><td>3</td><td>0</td><td>2</td><td>0</td><td>2</td><td>1</td><td>1</td><td>6</td></tr><tr><th>1</th><td>893</td><td>3</td><td>1</td><td>2</td><td>0</td><td>0</td><td>3</td><td>0</td><td>6</td></tr><tr><th>2</th><td>894</td><td>2</td><td>0</td><td>3</td><td>1</td><td>2</td><td>1</td><td>1</td><td>6</td></tr><tr><th>3</th><td>895</td><td>3</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>3</td></tr><tr><th>4</th><td>896</td><td>3</td><td>1</td><td>1</td><td>1</td><td>0</td><td>3</td><td>0</td><td>3</td></tr><tr><th>5</th><td>897</td><td>3</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><th>6</th><td>898</td><td>3</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>3</td></tr><tr><th>7</th><td>899</td><td>2</td><td>0</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td><td>2</td></tr><tr><th>8</th><td>900</td><td>3</td><td>1</td><td>1</td><td>0</td><td>1</td><td>3</td><td>1</td><td>3</td></tr><tr><th>9</th><td>901</td><td>3</td><td>0</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td><td>3</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 ### 建模，预测，解决问题
 
@@ -860,13 +906,14 @@ coeff_df["Correlation"] = pd.Series(logreg.coef_[0])
 
 coeff_df.sort_values(by='Correlation', ascending=False)
 {% endhighlight %}
-
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Feature</th><th>Correlation</th></tr></thead>
   <tbody><tr><th>1</th><td>Sex</td><td>2.201527</td></tr><tr><th>5</th><td>Title</td><td>0.398234</td></tr><tr><th>2</th><td>Age</td><td>0.287163</td></tr><tr><th>4</th><td>Embarked</td><td>0.261762</td></tr><tr><th>6</th><td>IsAlone</td><td>0.129140</td></tr><tr><th>3</th><td>Fare</td><td>-0.085150</td></tr><tr><th>7</th><td>Age*Class</td><td>-0.311200</td></tr><tr><th>0</th><td>Pclass</td><td>-0.749007</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 接下来我们使用支持向量机进行模型，支持向量机是具有相关学习算法的监督学习模型，分析用于分类和回归分析的数据。 给定一组训练样本，每个训练样本被标记为属于两个类别中的一个或另一个，SVM训练算法建立将新的测试样本分配给一个类别或另一个类别的模型，使其成为非概率二进制线性分类器。 参考维基百科。
 
@@ -1001,12 +1048,14 @@ models = pd.DataFrame({ 'Model': ['Support Vector Machines', 'KNN', 'Logistic Re
 models.sort_values(by='Score', ascending=False)
 {% endhighlight %}
 
+<pre>
 <div>
   <table border="1" class="dataframe">
   <thead><tr style="text-align: right;"><th></th><th>Model</th><th>Score</th></tr></thead>
   <tbody><tr><th>3</th><td>Random Forest</td><td>86.76</td></tr><tr><th>8</th><td>Decision Tree</td><td>86.76</td></tr><tr><th>1</th><td>KNN</td><td>84.74</td></tr><tr><th>0</th><td>Support Vector Machines</td><td>83.84</td></tr><tr><th>2</th><td>Logistic Regression</td><td>80.36</td></tr><tr><th>7</th><td>Linear SVC</td><td>79.12</td></tr><tr><th>5</th><td>Perceptron</td><td>78.00</td></tr><tr><th>4</th><td>Naive Bayes</td><td>72.28</td></tr><tr><th>6</th><td>Stochastic Gradient Decent</td><td>65.77</td></tr></tbody>
 </table>
 </div>
+</pre>
 
 {% highlight python linenos %}
 submission = pd.DataFrame({ "PassengerId": test_df["PassengerId"], "Survived": Y_pred })
