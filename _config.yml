@@ -3,9 +3,9 @@ title:               珞珈村下山
 tagline:             每天前进一小步
 description:
 baseurl:
-url:                 http://127.0.0.1:4000 #https://whuxgxj.github.io
+url:                 https://whuxgxj.github.io
 github:
-  url:               http://127.0.0.1:4000 #https://whuxgxj.github.io
+  url:               https://whuxgxj.github.io
 author:
   name:              "jian11"
   email:             "whuxgxj@gmail.com"
